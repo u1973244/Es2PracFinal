@@ -39,7 +39,7 @@ public class Jugador {
         this._vehicle=c.apuntarse(this,v,p);
 
         System.out.println("    PARTICIPANTS A LA CURSA:");
-        c.mostra();
+        c.mostraParticipants();
     }
 
     //mostra tipus vehicle existents i demana seleccionarne un

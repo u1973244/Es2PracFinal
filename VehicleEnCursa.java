@@ -35,19 +35,25 @@ public class VehicleEnCursa {
 
     public void avança(int valor){
         if(valor<0){
-            
+            _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
         }
         else if(valor>0){
-            _pos[0]
+            _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
         }
-
     }
     public void recula(){
 
     }
-    public void gira(){
-
+    public void gira(double valor){
+        _pos[1]+=valor;
+        if(_pos[1]<0){
+            _pos[1]+=360;
+        }
+        else if(_pos[1]>359){
+            _pos[1]-=360;
+        }
     }
+    
     public int voltes(){
         return _voltes;
     }
