@@ -12,9 +12,6 @@ public class Kairomart {
     private static void lecturaDades(vehiclesDisponibles){
 
         ArrayList<TipusTerreny> tipusTerrenys = new ArrayList<>();
-        ArrayList<Personatge> personatges = new ArrayList<>();
-        ArrayList<TipusVehicle> vehicles = new ArrayList<>();
-        ArrayList<Jugador> jugadors = new ArrayList<>();
 
         try (BufferedReader lector = new BufferedReader(new FileReader("./Dades"))) {
             String linia;
@@ -26,31 +23,6 @@ public class Kairomart {
                     int id = Integer.parseInt(parts[2].trim());
                     tipusTerrenys.add(new TipusTerreny(nom, id));
                 }
-                else if(parts[0].trim()=="personatge"){
-                    String nom = parts[1].trim();
-                    personatges.add(new Personatge(nom));
-                }
-                else if(parts[0].trim()=="vehicle"){
-                    int id = parts[1].trim();
-                    String nom = parts[2].trim();
-                    double adherencia = parts[3].trim();
-                    double resistenciaAlXoc = parts[4].trim();
-                    if(parts[4].trim()=="biga"){
-                        vehicles.add(new Biga(id,nom,adherencia,resistenciaAlXoc));
-                    }
-                    else if(parts[4].trim()=="quadriga"){
-                        vehicles.add(new Quadriga(id,nom,adherencia,resistenciaAlXoc));
-                    }
-                    else{
-                        vehicles.add(new Cavall(id,nom,adherencia,resistenciaAlXoc));
-                    }
-                }
-                else if(parts[0].trim()=="jugador"){
-                    int id = parts[1].trim();
-                    String nom = parts[2].trim();
-                    jugadors.add(new Jugador(id,nom));
-                }
-
 
                 System.out.println(linia);
             }
@@ -124,8 +96,8 @@ public class Kairomart {
 
 
     public static void main(String[] args) {
-        Cursa c= new Cursa(3,10,0);
         Vehicles vehiclesDisponibles;
+        lecturaDades(vehiclesDisponibles);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;
