@@ -124,8 +124,8 @@ public class Kairomart {
 
 
     public static void main(String[] args) {
+        Cursa c= new Cursa(3,10,0);
         Vehicles vehiclesDisponibles;
-        lecturaDades(vehiclesDisponibles);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;
