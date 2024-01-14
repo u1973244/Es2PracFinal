@@ -17,7 +17,11 @@ public class VehicleEnCursa {
         this._personatge=p;
         this._cursa=c;
         this.Posicio=c.PosInicial;
-        this
+        this._vel = 0;
+        this._acceleracio = 0;
+        this._voltes = 0;
+        this._pos = Posicio(0,0);
+        this._temps = 0;
     }
 
     public Vector2 getPos(){
