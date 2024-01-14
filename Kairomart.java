@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Kairomart {
 
 
-    private static void lecturaDades(){
+    private static void lecturaDades(vehiclesDisponibles){
 
         ArrayList<TipusTerreny> tipusTerrenys = new ArrayList<>();
         ArrayList<Personatge> personatges = new ArrayList<>();
@@ -50,9 +50,12 @@ public class Kairomart {
             e.printStackTrace();
         }
 
+
+        vehiclesDisponibles= new Vehicles(vehicles);
+
         // vincular llista de vehicles a jugadors
         for(Jugador j : jugadors){
-            j.vincularVehicles(vehicles);
+            j.vincularVehicles(vehiclesDisponibles);
         }
 
     }
@@ -113,8 +116,8 @@ public class Kairomart {
 
 
     public static void main(String[] args) {
-
-        lecturaDades();
+        Vehicles vehiclesDisponibles;
+        lecturaDades(vehiclesDisponibles);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;

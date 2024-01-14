@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jugador {
 
     private int _id;
     private String _nom;
-    private ArrayList<TipusVehicle> _vehiclesDisponibles;
+    private Vehicles _vehiclesDisponibles;
     private VehicleEnCursa _vehicle;
 
 
@@ -13,7 +14,7 @@ public class Jugador {
         this._nom = nom;
     }
 
-    public void vincularVehicles(ArrayList<TipusVehicle> vehicles){
+    public void vincularVehicles(Vehicles vehicles){
         this._vehiclesDisponibles=vehicles;
     }
 
@@ -22,23 +23,35 @@ public class Jugador {
     }
 
     public void participar(Cursa c){
+        TipusVehicle v=null;
+        v=seleccionarVehicle();
+        while (v==null){
+            System.out.println("    VEHICLE NO DISPONIBLE");
+            v=seleccionarVehicle();
+        }
+
+        this._vehicle=c.apuntarse(this,v,p);
+    }
+
+    //mostra tipus vehicle existents i demana seleccionarne un
+    //retorna vehicle seleccionat o null en cas que no existeixi
+    private TipusVehicle seleccionarVehicle(){
+
         //MOSTRAR VEHICLES
         System.out.println("    VEHICLES");
-        for(TipusVehicle vehicle : this._vehiclesDisponibles){
-            System.out.println("    -" + vehicle.nomVehicle());
-        }
+        this._vehiclesDisponibles.mostrar();
+
+        Scanner scanner = new Scanner(System.in);
         //TRIAR UN VEHICLE (vincular)
         System.out.print("Entra nom del Vehicle: ");
         String nomVehicle = scanner.nextLine();
-        trobat = false;
-        i = 0;
-        while(!trobat && i < vehicles.size()){
-            Personatge v = vehicles.get(i);
-            if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
-                trobat = true;
-            }
+        scanner.close();
+        return this._vehiclesDisponibles.find(nomVehicle);
 
-        }
+    }
+
+    private Personatge seleccionarPersonatge(Cursa c){
+        
         //MOSTRAR PERSONATGES DISPONIBLES
         System.out.println("    PERSONATGES DISPONIBLES");
         for(Personatge personatge:personatges){
@@ -46,6 +59,7 @@ public class Jugador {
                 System.out.println("    -" + personatge.nomPersonatge());
             }
         }
+        
         //TRIAR UN PERSONATGE (vincular + deseleccionar)
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = scanner.nextLine();
@@ -58,7 +72,5 @@ public class Jugador {
                 p.escollir();
             }
         }
-        //VINCULAR INSCRIURE jugador, p, v
-        this._vehicle=c.apuntarse(this,v,p);
     }
 }

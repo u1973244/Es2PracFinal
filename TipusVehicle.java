@@ -8,4 +8,7 @@ abstract class TipusVehicle {
     abstract void accelerar(Vector2 pos, Vector2 vel, Vector2 acc);
     abstract void frenar(Vector2 pos, Vector2 vel, Vector2 acc);
 
+    public String nomVehicle(){
+        return this._nom;
+    }
 }
