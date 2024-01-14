@@ -41,5 +41,14 @@ public class Cursa {
         }
     }
 
-    
+    public VehicleEnCursa findVehicle(String nomVehicle){
+        boolean trobat = false;
+        int i = 0;
+        while(!trobat && i<vehiclesParticipants.size()){
+            VehicleEnCursa v = vehiclesParticipants.get(i);
+            if(().equalsIgnoreCase(nomPersonatge))
+        }
+        return null;
+    }
+
 }
