@@ -1,5 +1,5 @@
 public class VehicleEnCursa {
-    private Vector2 _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
+    private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
     private double _acceleracio;
     private int _voltes;
@@ -16,6 +16,8 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
+        this.Posicio=c.PosInicial;
+        this
     }
 
     public Vector2 getPos(){
@@ -33,27 +35,17 @@ public class VehicleEnCursa {
         return _personatge;
     }
 
-    public void avança(int valor){
-        if(valor<0){
-            _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
-        }
-        else if(valor>0){
-            _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
-        }
+    public void avança(){ //
+        _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
+    
     }
-    public void recula(){
-
+    public void recula(){ //frenar pot 
+        _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
     }
     public void gira(double valor){
-        _pos[1]+=valor;
-        if(_pos[1]<0){
-            _pos[1]+=360;
-        }
-        else if(_pos[1]>359){
-            _pos[1]-=360;
-        }
+        _pos.ModificarRotacio(valor);
     }
-    
+
     public int voltes(){
         return _voltes;
     }
