@@ -18,7 +18,7 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
-        this._Posicio=c.PosInicial;
+        this._pos=c.PosInicial;
         this._vel = 0;
         this._acceleracio = 0;
         this._voltes = 0;
@@ -49,8 +49,8 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
+         = _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
 
-        _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
     }
 
     public void recula(){ //frenar pot 

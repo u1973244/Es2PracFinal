@@ -5,11 +5,13 @@ class Biga extends TipusVehicle{
     }
 
     void accelerar(double pos, double vel, double acc){
-   
+        vel = acc;
+        pos += vel;
     }
 
     void frenar(double pos, double vel, double acc){
-       
+        vel = acc;
+        pos += vel;
     }
 
 }
