@@ -54,23 +54,26 @@ public class Jugador {
         
         //MOSTRAR PERSONATGES DISPONIBLES
         System.out.println("    PERSONATGES DISPONIBLES");
+        ArrayList<Personatge> personatges= new ArrayList<Personatge>();
         for(Personatge personatge:personatges){
-            if(personatge.elegible()){
-                System.out.println("    -" + personatge.nomPersonatge());
-            }
+            System.out.println("    -" + personatge.nomPersonatge());
         }
         
+        Scanner scanner = new Scanner(System.in);
         //TRIAR UN PERSONATGE (vincular + deseleccionar)
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = scanner.nextLine();
+        Personatge p=null;
         boolean trobat = false;
         int i = 0;
         while(!trobat && i < personatges.size()){
-            Personatge p = personatges.get(i);
+            p = personatges.get(i);
             if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
                 trobat = true;
                 p.escollir();
+                return p;
             }
         }
+        return null;
     }
 }

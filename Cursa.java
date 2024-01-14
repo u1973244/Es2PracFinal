@@ -10,6 +10,7 @@ public class Cursa {
     private TipusTerreny _terreny;
 
     private List<VehicleEnCursa> vehiclesParticipants;
+    private Personatges personatgesDisponibles;
 
 
     //constructor amb parametres

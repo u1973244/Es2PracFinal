@@ -1,15 +1,14 @@
 public class Personatge {
-    
-    private String _nom;
+    private TipusPersonatge _tipus;
     private boolean _escollit;
 
-    public Personatge(String nom){
-        this._nom = nom;
+    public Personatge(TipusPersonatge tipus){
+        this._tipus=tipus;
         this._escollit = false;
     }
 
     public String nomPersonatge(){
-        return _nom;
+        return _tipus.nom();
     }
 
     public boolean elegible(){
