@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cursa {
@@ -23,8 +24,10 @@ public class Cursa {
 
 
     //omplir
-    public VehicleEnCursa apuntarse(TipusVehicle vehicle, Personatge personatge){
-        return new VehicleEnCursa();
+    public VehicleEnCursa apuntarse(Jugador j, TipusVehicle vehicle, Personatge personatge){
+        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this);
+        vehiclesParticipants.add(v);
+        return v;
     }
 
     public int id(){

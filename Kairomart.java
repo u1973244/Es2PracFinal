@@ -8,14 +8,16 @@ import java.util.Scanner;
 
 public class Kairomart {
 
+
     private static void lecturaDades(){
+
+        ArrayList<TipusTerreny> tipusTerrenys = new ArrayList<>();
+        ArrayList<Personatge> personatges = new ArrayList<>();
+        ArrayList<TipusVehicle> vehicles = new ArrayList<>();
+        ArrayList<Jugador> jugadors = new ArrayList<>();
 
         try (BufferedReader lector = new BufferedReader(new FileReader("./Dades"))) {
             String linia;
-            List<TipusTerreny> tipusTerrenys = new ArrayList<>();
-            List<Personatge> personatges = new ArrayList<>();
-            List<Vehicle> vehicles = new ArrayList<>();
-            List<Jugador> jugadors = new ArrayList<>();
 
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
@@ -26,14 +28,14 @@ public class Kairomart {
                 }
                 else if(parts[0].trim()=="personatge"){
                     String nom = parts[1].trim();
-                    Personatge.add(new Personatge(nom));
+                    personatges.add(new Personatge(nom));
                 }
                 else if(parts[0].trim()=="vehicle"){
                     int id = parts[1].trim();
                     String nom = parts[2].trim();
                     double adherencia = parts[3].trim();
                     double resistenciaAlXoc = parts[4].trim();
-                    vehicles.add(new Vehicle(id,nom,adherencia,resistenciaAlXoc));
+                    vehicles.add(new TipusVehicle(id,nom,adherencia,resistenciaAlXoc));
                 }
                 else if(parts[0].trim()=="jugador"){
                     int id = parts[1].trim();
@@ -46,6 +48,11 @@ public class Kairomart {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        // vincular llista de vehicles a jugadors
+        for(Jugador j : jugadors){
+            j.vincularVehicles(vehicles);
         }
 
     }
@@ -71,45 +78,7 @@ public class Kairomart {
                 System.out.println("\nJugador no trobat");
             }
         }
-        
-        //MOSTRAR PERSONATGES DISPONIBLES
-        System.out.println("    PERSONATGES DISPONIBLES");
-        for(Personatge personatge:personatges){
-            if(personatge.elegible()){
-                System.out.println("    -" + personatge.nomPersonatge());
-            }
-        }
-        //TRIAR UN PERSONATGE (vincular + deseleccionar)
-        System.out.print("Entra nom del Personatge: ");
-        String nomPersonatge = scanner.nextLine();
-        boolean trobat = false;
-        int i = 0;
-        while(!trobat && i < personatges.size()){
-            Personatge p = personatges.get(i);
-            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
-                trobat = true;
-                p.escollir();
-            }
-        }
-        //MOSTRAR VEHICLES
-        System.out.println("    VEHICLES");
-        for(Vehicle vehicle:vehicles){
-            System.out.println("    -" + vehicle.nomVehicle());
-        }
-        //TRIAR UN VEHICLE (vincular)
-        System.out.print("Entra nom del Vehicle: ");
-        String nomVehicle = scanner.nextLine();
-        trobat = false;
-        i = 0;
-        while(!trobat && i < vehicles.size()){
-            Personatge v = vehicles.get(i);
-            if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
-                trobat = true;
-            }
-
-        }
-        //VINCULAR INSCRIURE jugador, p, v
-        cursa.apuntarse(j,v,p);
+        j.participar(c);
 
         
         //MOSTRAR LLISTA JUGADORS INSCRITS (nom, vehicle, personatge)

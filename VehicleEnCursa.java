@@ -6,6 +6,17 @@ public class VehicleEnCursa {
     private double _temps;
     private PerfilConduccio _perfil;
     private Personatge _personatge;
+    private TipusVehicle _tipusVehicle;
+    private Cursa _cursa;
+    private Jugador _jugador;
+
+
+    public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c){
+        this._jugador=j;
+        this._tipusVehicle=tipus;
+        this._personatge=p;
+        this._cursa=c;
+    }
 
     public Vector2 getPos(){
         return _pos;
