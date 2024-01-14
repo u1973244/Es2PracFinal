@@ -1,5 +1,5 @@
 public class VehicleEnCursa {
-    private int _Id;
+    private int _id;
     private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
     private double _acceleracio;
@@ -13,7 +13,7 @@ public class VehicleEnCursa {
 
 
     public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c, int id){
-        this._Id = id;
+        this._id = id;
         this._jugador=j;
         this._tipusVehicle=tipus;
         this._personatge=p;
@@ -24,6 +24,10 @@ public class VehicleEnCursa {
         this._voltes = 0;
         this._pos = Posicio(0,0);
         this._temps = 0;
+    }
+
+    public int getId(){
+        return _id;
     }
 
     public Vector2 getPos(){
@@ -45,6 +49,7 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
+
         _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
     }
 
