@@ -8,7 +8,7 @@ public class Curses {
         _curses.add(new Cursa(terreny,durada,maxParticipants,freeId()));
     }
 
-    private int freeId(){ // manera cutre de trobat posar identificador unic
+    private int freeId(){ // manera cutre de trobar i posar identificador unic
         int maxId=0;
         for (Cursa c : _curses) {
             maxId=Math.max(c.id(), maxId);
