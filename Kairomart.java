@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Kairomart {
 
-    private static void prepararParticipacio(Jugadors jugadors, Cursa c){
+    private void prepararParticipacio(Jugadors jugadors, Cursa c){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
@@ -30,12 +30,12 @@ public class Kairomart {
 
     }
 
-    private static void moureVehicle(){
+    private void moureVehicle(){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-MOURE VEHICLE-");
         System.out.print("Entra Vehicle: ");
-        String idVehicle = scanner.nextLine();
+        String nomVehicle = scanner.nextLine();
         
         //COMPROVAR SI VEHICLE EXISTEIX
             //ENTRAR DADES MOVIMENT
@@ -47,7 +47,7 @@ public class Kairomart {
 
     }
 
-    private static void mostrarClassificacioFinal(){
+    private void mostrarClassificacioFinal(){
 
         System.out.println("\n-MOSTRAR CLASSIFICACIÓ FINAL-");
         //MOSTRAR SITUACIÓ CARRERA (vehicle, top, voltes)
