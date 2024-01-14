@@ -5,8 +5,8 @@ abstract class TipusVehicle {
     protected double _adherencia;
     protected double _resistenciaAlXoc;
 
-    abstract void accelerar(Vector2 pos, Vector2 vel, Vector2 acc);
-    abstract void frenar(Vector2 pos, Vector2 vel, Vector2 acc);
+    abstract void accelerar(int pos, double vel, double acc);
+    abstract void frenar(int pos, double vel, double acc);
 
     public String nomVehicle(){
         return this._nom;

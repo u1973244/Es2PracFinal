@@ -1,7 +1,7 @@
 public class VehicleEnCursa {
-    private Vector2 _pos;
-    private Vector2 _vel;
-    private Vector2 _acceleracio;
+    private Vector2 _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
+    private double _vel;
+    private double _acceleracio;
     private int _voltes;
     private double _temps;
     private PerfilConduccio _perfil;
@@ -32,10 +32,14 @@ public class VehicleEnCursa {
     public Personatge personatge(){
         return _personatge;
     }
-    public void accelera(){
 
-    }
-    public void avança(){
+    public void avança(int valor){
+        if(valor<0){
+
+        }
+        else if(valor>0){
+            _pos[0]
+        }
 
     }
     public void recula(){
