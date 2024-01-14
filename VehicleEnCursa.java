@@ -35,17 +35,15 @@ public class VehicleEnCursa {
         return _personatge;
     }
 
-    public void avança(int valor){ //
-        _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
-    
+    public void avança(){ //
         _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
     
     }
     public void recula(){ //frenar pot 
-
+        _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
     }
     public void gira(double valor){
-      
+        _pos.ModificarRotacio(valor);
     }
 
     public int voltes(){
