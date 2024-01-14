@@ -37,7 +37,7 @@ public class Cursa {
 
     public void mostraParticipants(){
         for(VehicleEnCursa v: vehiclesParticipants){
-            
+            v.mostraParticipant();
         }
     }
 }

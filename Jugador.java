@@ -72,6 +72,7 @@ public class Jugador {
         //TRIAR UN PERSONATGE (vincular + deseleccionar)
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = scanner.nextLine();
+        scanner.close();
         for(Personatge p : personatges){
             if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
                 p.escollir();

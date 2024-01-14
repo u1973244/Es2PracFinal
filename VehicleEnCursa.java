@@ -63,4 +63,8 @@ public class VehicleEnCursa {
     public void actualitza(EventCursa ev){
 
     }
+
+    public void mostraParticipant(){
+        System.out.print(_jugador.nomJugador() + "   " + _personatge.nomPersonatge() + "   " + _tipusVehicle.nomVehicle());
+    }
 }
