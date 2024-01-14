@@ -9,12 +9,9 @@ public class Jugador {
     private VehicleEnCursa _vehicle;
 
 
-    public Jugador(int id, String nom){
+    public Jugador(int id, String nom, Vehicles vehicles){
         this._id = id;
         this._nom = nom;
-    }
-
-    public void vincularVehicles(Vehicles vehicles){
         this._vehiclesDisponibles=vehicles;
     }
 

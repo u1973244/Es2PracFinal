@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Jugadors {
     private ArrayList<Jugador> _jugadors = new ArrayList<>();
 
-    public Jugadors(String document){
+    public Jugadors(String document, Vehicles vehicles){
 
         try (BufferedReader lector = new BufferedReader(new FileReader(document))) {
             String linia;
@@ -14,7 +14,7 @@ public class Jugadors {
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
 
-                this._jugadors.add(new Jugador(Integer.parseInt(parts[1].trim()),parts[2].trim()));
+                this._jugadors.add(new Jugador(Integer.parseInt(parts[1].trim()),parts[2].trim(),vehicles));
             }
         } catch (IOException e) {
             e.printStackTrace();

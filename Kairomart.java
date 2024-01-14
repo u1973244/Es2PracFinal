@@ -8,10 +8,11 @@ import java.util.Scanner;
 
 public class Kairomart {
 
-    private static void prepararParticipacio(){
+    private static void prepararParticipacio(Jugadors jugadors, Cursa c){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
+        Jugador j;
         while(true){
             System.out.print("Entra l'ID del Jugador: ");
             String nomJugador = scanner.nextLine();
@@ -29,11 +30,8 @@ public class Kairomart {
                 System.out.println("\nJugador no trobat");
             }
         }
-        j.participar(c);
 
-        
-        //MOSTRAR LLISTA JUGADORS INSCRITS (nom, vehicle, personatge)
-            //mostrar VehicleEnCursa
+        j.participar(c);
 
 
     }
@@ -65,8 +63,10 @@ public class Kairomart {
 
     public static void main(String[] args) {
 
-        Jugadors jugadors = new Jugadors("DadesJugadors");
         Vehicles vehiclesDisponibles = new Vehicles("DadesVehicles");
+        Jugadors jugadors = new Jugadors("DadesJugadors",vehiclesDisponibles);
+
+        Cursa c=new Cursa(3,10);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;
@@ -83,7 +83,7 @@ public class Kairomart {
 
             switch (opcio) {
                 case 1:
-                    prepararParticipacio();
+                    prepararParticipacio(jugadors,cursa);
                     break;
                 case 2:
                     moureVehicle();

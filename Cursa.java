@@ -14,8 +14,8 @@ public class Cursa {
 
 
     //constructor amb parametres
-    public Cursa(int durada, int maxParticipants, int id){
-        this._id=id;
+    public Cursa(int durada, int maxParticipants){
+        this._id=0;
         this._maxParticipants=maxParticipants;
         this._duradaVoltes=durada;
         this._comencada=false;
