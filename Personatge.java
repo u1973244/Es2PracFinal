@@ -8,6 +8,10 @@ public class Personatge {
         this._escollit = false;
     }
 
+    public String nomPersonatge(){
+        return _nom;
+    }
+
     public boolean elegible(){
         return _escollit;
     }

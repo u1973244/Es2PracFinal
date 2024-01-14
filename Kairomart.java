@@ -53,13 +53,49 @@ public class Kairomart {
         //entenc que els jugadors estan entrats, si no fos així es crea el jugador i no es comprova
         //COMPROVAR SI JUGADDOR EXISTEIX
             //MOSTRAR PERSONATGES DISPONIBLES
+            System.out.println("    PERSONATGES DISPONIBLES");
+            for(Personatge personatge:personatges){
+                if(personatge.elegible()){
+                    System.out.println("    -" + personatge.nomPersonatge());
+                }
+            }
             //TRIAR UN PERSONATGE (vincular + deseleccionar)
+            System.out.print("Entra nom del Personatge: ");
+            String nomPersonatge = scanner.nextLine();
+            boolean trobat = false;
+            int i = 0;
+            while(!trobat && i < personatges.size()){
+                Personatge p = personatges.get(i);
+                if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
+                    trobat = true;
+                    p.escollir();
+                }
+
+            }
             //MOSTRAR VEHICLES
+            System.out.println("    VEHICLES");
+            for(Vehicle vehicle:vehicles){
+                System.out.println("    -" + vehicle.nomVehicle());
+            }
             //TRIAR UN VEHICLE (vincular)
+            System.out.print("Entra nom del Vehicle: ");
+            String nomVehicle = scanner.nextLine();
+            trobat = false;
+            i = 0;
+            while(!trobat && i < vehicles.size()){
+                Personatge v = vehicles.get(i);
+                if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
+                    trobat = true;
+                }
+
+            }
+            //VINCULAR INSCRIURE jugador, p, v
+            cursa.apuntarse(v,j);
         //SI NO EXISTEIX, TORNAR A PREGUNTAR
+
         
         //MOSTRAR LLISTA JUGADORS INSCRITS (nom, vehicle, personatge)
-
+            //mostrar VehicleEnCursa
         //scanner.close();
 
     }
