@@ -26,7 +26,7 @@ public class Cursa {
 
     //omplir
     public VehicleEnCursa apuntarse(Jugador j, TipusVehicle vehicle, Personatge personatge){
-        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this);
+        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this,freeId());
         vehiclesParticipants.add(v);
         return v;
     }
@@ -51,4 +51,12 @@ public class Cursa {
         return null;
     }
 
+
+    private int freeId(){
+        int max=0;
+        for(VehicleEnCursa v : vehiclesParticipants){
+            max=Math.max(max,v.id());
+        }
+        return max;
+    }
 }

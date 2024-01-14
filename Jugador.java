@@ -6,7 +6,7 @@ public class Jugador {
     private int _id;
     private String _nom;
     private Vehicles _vehiclesDisponibles;
-    private VehicleEnCursa _vehicle;
+    private VehicleEnCursa _vehicle=null;
 
 
     public Jugador(int id, String nom, Vehicles vehicles){
@@ -20,6 +20,12 @@ public class Jugador {
     }
 
     public void participar(Cursa c){
+        if(_vehicle!=null){
+            System.out.println("    AQUEST JUGADOR JA ESTÀ PARTICIPANT A LA CURSA");
+            return;
+        }
+
+        
         TipusVehicle v=null;
         v=seleccionarVehicle();
         while (v==null){
