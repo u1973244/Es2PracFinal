@@ -21,8 +21,16 @@ public class Jugadors {
         }
     }
 
-    public boolean find(String nomJugador){
-        
+    public Jugador find(String nomJugador){
+        for(Jugador j : _jugadors){
+            if(j.nomJugador()==nomJugador) return j;
+        }
+        return null;
     }
 
+    public void mostra(){
+        for(Jugador j : _jugadors){
+            System.out.println(j.nomJugador());
+        }
+    }
 }

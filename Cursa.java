@@ -28,7 +28,7 @@ public class Cursa {
 
     //omplir
     public VehicleEnCursa apuntarse(Jugador j, TipusVehicle vehicle, Personatge personatge){
-        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this);
+        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this,freeId());
         vehiclesParticipants.add(v);
         return v;
     }
@@ -42,15 +42,31 @@ public class Cursa {
             v.mostraParticipant();
         }
     }
+    public void mostraVehicles(){
+        for(VehicleEnCursa v: vehiclesParticipants){
+            v.nomTipusVehicle();
+        }
+    }
 
-    public VehicleEnCursa findVehicle(String nomVehicle){
+    public VehicleEnCursa findVehicle(String idVehicle){
         boolean trobat = false;
         int i = 0;
         while(!trobat && i<vehiclesParticipants.size()){
             VehicleEnCursa v = vehiclesParticipants.get(i);
-            if(().equalsIgnoreCase(nomPersonatge))
+            if(v.getId().equalsIgnoreCase(idVehicle)){
+                trobat = true;
+                return v;
+            }
         }
         return null;
     }
 
+
+    private int freeId(){
+        int max=0;
+        for(VehicleEnCursa v : vehiclesParticipants){
+            max=Math.max(max,v.getId());
+        }
+        return max;
+    }
 }
