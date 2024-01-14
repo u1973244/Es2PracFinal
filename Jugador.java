@@ -29,8 +29,17 @@ public class Jugador {
             System.out.println("    VEHICLE NO DISPONIBLE");
             v=seleccionarVehicle();
         }
+        Personatge p=null;
+        p=seleccionarPersonatge(c);
+        while (v==null){
+            System.out.println("    PERSONATGE NO DISPONIBLE");
+            v=seleccionarVehicle();
+        }
 
         this._vehicle=c.apuntarse(this,v,p);
+
+        System.out.println("    PARTICIPANTS A LA CURSA:");
+        c.mostra();
     }
 
     //mostra tipus vehicle existents i demana seleccionarne un
@@ -63,13 +72,8 @@ public class Jugador {
         //TRIAR UN PERSONATGE (vincular + deseleccionar)
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = scanner.nextLine();
-        Personatge p=null;
-        boolean trobat = false;
-        int i = 0;
-        while(!trobat && i < personatges.size()){
-            p = personatges.get(i);
+        for(Personatge p : personatges){
             if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
-                trobat = true;
                 p.escollir();
                 return p;
             }

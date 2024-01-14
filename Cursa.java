@@ -14,13 +14,13 @@ public class Cursa {
 
 
     //constructor amb parametres
-    public Cursa(TipusTerreny terreny, int durada, int maxParticipants, int id){
+    public Cursa(int durada, int maxParticipants, int id){
         this._id=id;
         this._maxParticipants=maxParticipants;
         this._duradaVoltes=durada;
         this._comencada=false;
         this._acabada=false;
-        this._terreny=terreny;
+        this.personatgesDisponibles=new Personatges("DadesPersonatge");
     }
 
 
@@ -33,5 +33,9 @@ public class Cursa {
 
     public int id(){
         return this._id;
+    }
+
+    public void mostra(){
+
     }
 }
