@@ -20,7 +20,7 @@ public class Kairomart {
             int i = 0;
             //COMPROVAR SI JUGADDOR EXISTEIX
             while(!trobat && i < jugadors.size()){
-                Jugador j = jugadors.get(i);
+                j = jugadors.get(i);
                 if(j.nomJugador().equalsIgnoreCase(nomJugador)){
                     trobat = true;
                     break;
