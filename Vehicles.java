@@ -41,10 +41,10 @@ public class Vehicles {
         while(!trobat && i < this._vehicles.size()){
             v = this._vehicles.get(i);
             if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
-                trobat = true;
+                return v;
             }
         }
-        return v;
+        return null;
     }
 
     public void mostrar(){
