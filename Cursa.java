@@ -42,6 +42,15 @@ public class Cursa {
     }
 
     public VehicleEnCursa obtenirVehicle(String nomVehicle){
-
+        boolean trobat = false;
+        int i = 0;
+        while(!trobat && i < vehiclesParticipants.size()){
+            VehicleEnCursa vehicle = vehiclesParticipants.get(i);
+            if(vehicle.nomTipusVehicle().equalsIgnoreCase(nomVehicle)){
+                trobat = true;
+                return vehicle;
+            }
+        }
+        return null;
     }
 }
