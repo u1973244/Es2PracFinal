@@ -1,4 +1,5 @@
 public class VehicleEnCursa {
+    private int _Id;
     private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
     private double _acceleracio;
@@ -16,7 +17,7 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
-        this.Posicio=c.PosInicial;
+        this._Posicio=c.PosInicial;
         this._vel = 0;
         this._acceleracio = 0;
         this._voltes = 0;
@@ -27,25 +28,29 @@ public class VehicleEnCursa {
     public Vector2 getPos(){
         return _pos;
     }
+
     public boolean canviarPersonatge(Personatge personatge){
         //s'ha de verificar que ningú estigui fent servir aquell personatge a la cursa, si s'està fent servir, no es canvia i es retorna false, si s'ha pogut canviar es retorna true.
         //_personatge = personatge;
         return true;
     }
+
     public void canviarPerfil(PerfilConduccio tipus){
         _perfil = tipus;
     }
+
     public Personatge personatge(){
         return _personatge;
     }
 
     public void avança(){ //
         _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
-    
     }
+
     public void recula(){ //frenar pot 
         _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
     }
+
     public void gira(double valor){
         _pos.ModificarRotacio(valor);
     }
@@ -53,9 +58,11 @@ public class VehicleEnCursa {
     public int voltes(){
         return _voltes;
     }
+
     public double temps(){
         return _temps;
     }
+
     public void actualitza(EventCursa ev){
 
     }
