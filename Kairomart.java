@@ -35,7 +35,15 @@ public class Kairomart {
                     String nom = parts[2].trim();
                     double adherencia = parts[3].trim();
                     double resistenciaAlXoc = parts[4].trim();
-                    vehicles.add(new TipusVehicle(id,nom,adherencia,resistenciaAlXoc));
+                    if(parts[4].trim()=="biga"){
+                        vehicles.add(new Biga(id,nom,adherencia,resistenciaAlXoc));
+                    }
+                    else if(parts[4].trim()=="quadriga"){
+                        vehicles.add(new Quadriga(id,nom,adherencia,resistenciaAlXoc));
+                    }
+                    else{
+                        vehicles.add(new Cavall(id,nom,adherencia,resistenciaAlXoc));
+                    }
                 }
                 else if(parts[0].trim()=="jugador"){
                     int id = parts[1].trim();
