@@ -35,7 +35,9 @@ public class Cursa {
         return this._id;
     }
 
-    public void mostra(){
-
+    public void mostraParticipants(){
+        for(VehicleEnCursa v: vehiclesParticipants){
+            
+        }
     }
 }
