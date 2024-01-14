@@ -66,7 +66,7 @@ public class Kairomart {
         Vehicles vehiclesDisponibles = new Vehicles("DadesVehicles");
         Jugadors jugadors = new Jugadors("DadesJugadors",vehiclesDisponibles);
 
-        Cursa c=new Cursa(3,10);
+        Cursa cursa=new Cursa(3,10);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;
