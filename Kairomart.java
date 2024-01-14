@@ -27,15 +27,15 @@ public class Kairomart {
 
         j.participar(c);
 
-
     }
 
-    private void moureVehicle(){
+    private void moureVehicle(Cursa c){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-MOURE VEHICLE-");
         System.out.print("Entra Vehicle: ");
         String nomVehicle = scanner.nextLine();
+        VehicleEnCursa v = c.findVehicle(nomVehicle);
         
         //COMPROVAR SI VEHICLE EXISTEIX
             //ENTRAR DADES MOVIMENT
@@ -47,7 +47,7 @@ public class Kairomart {
 
     }
 
-    private void mostrarClassificacioFinal(){
+    private void mostrarClassificacioFinal(Cursa c){
 
         System.out.println("\n-MOSTRAR CLASSIFICACIÓ FINAL-");
         //MOSTRAR SITUACIÓ CARRERA (vehicle, top, voltes)
@@ -80,10 +80,10 @@ public class Kairomart {
                     prepararParticipacio(jugadors,cursa);
                     break;
                 case 2:
-                    moureVehicle();
+                    moureVehicle(cursa);
                     break;
                 case 3:
-                    mostrarClassificacioFinal();
+                    mostrarClassificacioFinal(cursa);
                     break;
                 case 0:
                     System.out.println("-FINAL-");
