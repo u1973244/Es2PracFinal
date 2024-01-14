@@ -12,23 +12,17 @@ public class Kairomart {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
-        Jugador j;
-        while(true){
+        System.out.println("\n-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
+        jugadors.mostra();
+        String nomJugador = scanner.nextLine();
+        Jugador j=jugadors.find(nomJugador);
+        while(j==null){
+            System.out.println("\n-JUGADOR NO EXISTEIX-");
+            System.out.println("\n-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
+            jugadors.mostra();
             System.out.print("Entra l'ID del Jugador: ");
-            String nomJugador = scanner.nextLine();
-            boolean trobat = false;
-            int i = 0;
-            //COMPROVAR SI JUGADDOR EXISTEIX
-            while(!trobat && i < jugadors.size()){
-                j = jugadors.get(i);
-                if(j.nomJugador().equalsIgnoreCase(nomJugador)){
-                    trobat = true;
-                    break;
-                }
-            }
-            if(!trobat){
-                System.out.println("\nJugador no trobat");
-            }
+            nomJugador = scanner.nextLine();
+            j=jugadors.find(nomJugador);
         }
 
         j.participar(c);

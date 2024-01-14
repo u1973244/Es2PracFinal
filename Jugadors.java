@@ -21,4 +21,8 @@ public class Jugadors {
         }
     }
 
+    public boolean find(String nomJugador){
+        
+    }
+
 }
