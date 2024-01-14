@@ -4,12 +4,12 @@ class Biga extends TipusVehicle{
         super(int id, String nom, double vMax, double adherencia, double resistenciaAlXoc);
     }
 
-    void accelerar(Vector2 pos, int vel, int acc){
+    void accelerar(double pos, double vel, double acc){
        vel.add(acc);
        pos.add(vel);
     }
 
-    void frenar(Vector2 pos, int vel, int acc){
+    void frenar(double pos, double vel, double acc){
         vel.add(acc);
         pos.add(vel);
     }

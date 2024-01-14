@@ -35,7 +35,7 @@ public class VehicleEnCursa {
 
     public void avança(int valor){
         if(valor<0){
-
+            
         }
         else if(valor>0){
             _pos[0]
