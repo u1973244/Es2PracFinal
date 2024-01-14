@@ -15,6 +15,7 @@ public class Kairomart {
             List<TipusTerreny> tipusTerrenys = new ArrayList<>();
             List<Personatge> personatges = new ArrayList<>();
             List<Vehicle> vehicles = new ArrayList<>();
+            List<Jugador> jugadors = new ArrayList<>();
 
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
@@ -34,6 +35,11 @@ public class Kairomart {
                     double resistenciaAlXoc = parts[4].trim();
                     vehicles.add(new Vehicle(id,nom,adherencia,resistenciaAlXoc));
                 }
+                else if(parts[0].trim()=="jugador"){
+                    int id = parts[1].trim();
+                    String nom = parts[2].trim();
+                    jugadors.add(new Jugador(id,nom));
+                }
 
 
                 System.out.println(linia);
@@ -48,55 +54,67 @@ public class Kairomart {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
-        System.out.print("Entra l'ID del Jugador: ");
-        String idJugador = scanner.nextLine();
-        //entenc que els jugadors estan entrats, si no fos així es crea el jugador i no es comprova
-        //COMPROVAR SI JUGADDOR EXISTEIX
-            //MOSTRAR PERSONATGES DISPONIBLES
-            System.out.println("    PERSONATGES DISPONIBLES");
-            for(Personatge personatge:personatges){
-                if(personatge.elegible()){
-                    System.out.println("    -" + personatge.nomPersonatge());
-                }
-            }
-            //TRIAR UN PERSONATGE (vincular + deseleccionar)
-            System.out.print("Entra nom del Personatge: ");
-            String nomPersonatge = scanner.nextLine();
+        while(true){
+            System.out.print("Entra l'ID del Jugador: ");
+            String nomJugador = scanner.nextLine();
             boolean trobat = false;
             int i = 0;
-            while(!trobat && i < personatges.size()){
-                Personatge p = personatges.get(i);
-                if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
+            //COMPROVAR SI JUGADDOR EXISTEIX
+            while(!trobat && i < jugadors.size()){
+                Jugador j = jugadors.get(i);
+                if(j.nomJugador().equalsIgnoreCase(nomJugador)){
                     trobat = true;
-                    p.escollir();
+                    break;
                 }
+            }
+            if(!trobat){
+                System.out.println("\nJugador no trobat");
+            }
+        }
+        
+        //MOSTRAR PERSONATGES DISPONIBLES
+        System.out.println("    PERSONATGES DISPONIBLES");
+        for(Personatge personatge:personatges){
+            if(personatge.elegible()){
+                System.out.println("    -" + personatge.nomPersonatge());
+            }
+        }
+        //TRIAR UN PERSONATGE (vincular + deseleccionar)
+        System.out.print("Entra nom del Personatge: ");
+        String nomPersonatge = scanner.nextLine();
+        boolean trobat = false;
+        int i = 0;
+        while(!trobat && i < personatges.size()){
+            Personatge p = personatges.get(i);
+            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
+                trobat = true;
+                p.escollir();
+            }
+        }
+        //MOSTRAR VEHICLES
+        System.out.println("    VEHICLES");
+        for(Vehicle vehicle:vehicles){
+            System.out.println("    -" + vehicle.nomVehicle());
+        }
+        //TRIAR UN VEHICLE (vincular)
+        System.out.print("Entra nom del Vehicle: ");
+        String nomVehicle = scanner.nextLine();
+        trobat = false;
+        i = 0;
+        while(!trobat && i < vehicles.size()){
+            Personatge v = vehicles.get(i);
+            if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
+                trobat = true;
+            }
 
-            }
-            //MOSTRAR VEHICLES
-            System.out.println("    VEHICLES");
-            for(Vehicle vehicle:vehicles){
-                System.out.println("    -" + vehicle.nomVehicle());
-            }
-            //TRIAR UN VEHICLE (vincular)
-            System.out.print("Entra nom del Vehicle: ");
-            String nomVehicle = scanner.nextLine();
-            trobat = false;
-            i = 0;
-            while(!trobat && i < vehicles.size()){
-                Personatge v = vehicles.get(i);
-                if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
-                    trobat = true;
-                }
-
-            }
-            //VINCULAR INSCRIURE jugador, p, v
-            cursa.apuntarse(v,j);
-        //SI NO EXISTEIX, TORNAR A PREGUNTAR
+        }
+        //VINCULAR INSCRIURE jugador, p, v
+        cursa.apuntarse(j,v,p);
 
         
         //MOSTRAR LLISTA JUGADORS INSCRITS (nom, vehicle, personatge)
             //mostrar VehicleEnCursa
-        //scanner.close();
+
 
     }
 
