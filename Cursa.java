@@ -55,7 +55,7 @@ public class Cursa {
     private int freeId(){
         int max=0;
         for(VehicleEnCursa v : vehiclesParticipants){
-            max=Math.max(max,v.id());
+            max=Math.max(max,v.getId());
         }
         return max;
     }
