@@ -34,4 +34,8 @@ public class Cursa {
     public int id(){
         return this._id;
     }
+
+    public void mostra(){
+        
+    }
 }
