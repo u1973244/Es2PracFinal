@@ -4,12 +4,12 @@ class Quadriga extends TipusVehicle{
         super(int id, String nom, double vMax, double adherencia, double resistenciaAlXoc);
     }
 
-    void accelerar(Vector2 pos, Vector2 vel, Vector2 acc){
+    void accelerar(Vector2 pos, int vel, int acc){
         vel.add(acc);
         pos.add(vel);
     }
 
-    void frenar(Vector2 pos, Vector2 vel, Vector2 acc){
+    void frenar(Vector2 pos, int vel, int acc){
         vel.add(acc);
         pos.add(vel);
     }
