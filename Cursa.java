@@ -40,4 +40,8 @@ public class Cursa {
             v.mostraParticipant();
         }
     }
+
+    public VehicleEnCursa obtenirVehicle(String nomVehicle){
+
+    }
 }
