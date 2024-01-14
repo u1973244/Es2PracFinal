@@ -8,7 +8,7 @@ public class Posicio {
         this._Rotacio = rot;
     }
 
-    public ModificarRotacio(double valor){
+    public void ModificarRotacio(double valor){
         this._Rotacio+=valor;
         if(this._Rotacio<0){
             this._Rotacio+=360;
@@ -18,7 +18,7 @@ public class Posicio {
         }
     }
 
-    public ModificarPunt(double valor){
+    public void ModificarPunt(double valor){
         this._Punt += valor;
         if(this._Punt<0){
             this._Punt+=100;
