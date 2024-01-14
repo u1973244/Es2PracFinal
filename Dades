@@ -1,4 +1,10 @@
-asfalt,1
-sorra,2
-gespa,3
+tipusTerreny,asfalt,1
+tipusTerreny,sorra,2
+tipusTerreny,gespa,3
 
+personatge,Kairo
+personatge,Migiu
+personatge,Noad
+
+vehicle,001,moto,100,0.4,0.2,biga
+vehicle,002,cotxe,120,0.8,0.7,quadriga

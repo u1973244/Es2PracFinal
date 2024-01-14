@@ -13,12 +13,28 @@ public class Kairomart {
         try (BufferedReader lector = new BufferedReader(new FileReader("./Dades"))) {
             String linia;
             List<TipusTerreny> tipusTerrenys = new ArrayList<>();
+            List<Personatge> personatges = new ArrayList<>();
+            List<Vehicle> vehicles = new ArrayList<>();
 
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
-                String nom = parts[0].trim();
-                int id = Integer.parseInt(parts[1].trim());
-                tipusTerrenys.add(new TipusTerreny(nom, id));
+                if(parts[0].trim()=="tipusTerreny"){
+                    String nom = parts[1].trim();
+                    int id = Integer.parseInt(parts[2].trim());
+                    tipusTerrenys.add(new TipusTerreny(nom, id));
+                }
+                else if(parts[0].trim()=="personatge"){
+                    String nom = parts[1].trim();
+                    Personatge.add(new Personatge(nom));
+                }
+                else if(parts[0].trim()=="vehicle"){
+                    int id = parts[1].trim();
+                    String nom = parts[2].trim();
+                    double adherencia = parts[3].trim();
+                    double resistenciaAlXoc = parts[4].trim();
+                    vehicles.add(new Vehicle(id,nom,adherencia,resistenciaAlXoc));
+                }
+
 
                 System.out.println(linia);
             }

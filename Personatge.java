@@ -3,7 +3,7 @@ public class Personatge {
     private String _nom;
     private boolean _escollit;
 
-    public void Personatge(String nom){
+    public Personatge(String nom){
         this._nom = nom;
         this._escollit = false;
     }
