@@ -12,7 +12,8 @@ public class VehicleEnCursa {
     private Jugador _jugador;
 
 
-    public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c){
+    public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c, int id){
+        this._Id = id;
         this._jugador=j;
         this._tipusVehicle=tipus;
         this._personatge=p;
