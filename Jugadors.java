@@ -28,4 +28,9 @@ public class Jugadors {
         return null;
     }
 
+    public void mostra(){
+        for(Jugador j : _jugadors){
+            System.out.println(j.nomJugador());
+        }
+    }
 }
