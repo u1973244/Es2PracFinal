@@ -1,24 +1,19 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Kairomart {
 
-    private void prepararParticipacio(Jugadors jugadors, Cursa c){
+    private static void prepararParticipacio(Jugadors jugadors, Cursa c){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
-        System.out.println("\n-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
+        System.out.println("-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
         jugadors.mostra();
+        System.out.print("Entra l'ID del Jugador: ");
         String nomJugador = scanner.nextLine();
         Jugador j=jugadors.find(nomJugador);
         while(j==null){
-            System.out.println("\n-JUGADOR NO EXISTEIX-");
-            System.out.println("\n-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
+            System.out.println("-JUGADOR NO EXISTEIX-");
+            System.out.println("-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
             jugadors.mostra();
             System.out.print("Entra l'ID del Jugador: ");
             nomJugador = scanner.nextLine();
@@ -29,25 +24,36 @@ public class Kairomart {
 
     }
 
-    private void moureVehicle(Cursa c){
+    private static void moureVehicle(Cursa c){
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n-MOURE VEHICLE-");
+        System.out.println("-VEHICLES EN CURSA-");
+        c.mostraVehicles();
         System.out.print("Entra Vehicle: ");
-        String nomVehicle = scanner.nextLine();
-        VehicleEnCursa v = c.findVehicle(nomVehicle);
-        
+        String idVehicle = scanner.nextLine();
+        VehicleEnCursa v = c.findVehicle(idVehicle);
         //COMPROVAR SI VEHICLE EXISTEIX
-            //ENTRAR DADES MOVIMENT
-            //APLICAR MOVIMENT AL VEHICLE
-            //MOSTRAR EL MOVIMENT QUE S'HA FET
-        //SI NO EXISTEIX, TORNAR A PREGUNTAR
+        while(v==null){
+            System.out.println("-VEHICLE NO EXISTEIX-");
+            System.out.println("-VEHICLES EN CURSA-");
+            c.mostraVehicles();
+            System.out.print("Entra Vehicle: ");
+            idVehicle = scanner.nextLine();
+            v = c.findVehicle(idVehicle);
+        }
         
-        //scanner.close();
+        //ENTRAR DADES MOVIMENT
+
+        //APLICAR MOVIMENT AL VEHICLE
+
+        //MOSTRAR EL MOVIMENT QUE S'HA FET
+
+        
 
     }
 
-    private void mostrarClassificacioFinal(Cursa c){
+    private static void mostrarClassificacioFinal(Cursa c){
 
         System.out.println("\n-MOSTRAR CLASSIFICACIÓ FINAL-");
         //MOSTRAR SITUACIÓ CARRERA (vehicle, top, voltes)

@@ -40,13 +40,21 @@ public class Cursa {
             v.mostraParticipant();
         }
     }
+    public void mostraVehicles(){
+        for(VehicleEnCursa v: vehiclesParticipants){
+            v.nomTipusVehicle();
+        }
+    }
 
-    public VehicleEnCursa findVehicle(String nomVehicle){
+    public VehicleEnCursa findVehicle(String idVehicle){
         boolean trobat = false;
         int i = 0;
         while(!trobat && i<vehiclesParticipants.size()){
             VehicleEnCursa v = vehiclesParticipants.get(i);
-            if(().equalsIgnoreCase(nomPersonatge))
+            if(v.getId().equalsIgnoreCase(idVehicle)){
+                trobat = true;
+                return v;
+            }
         }
         return null;
     }
