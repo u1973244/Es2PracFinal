@@ -35,11 +35,7 @@ public class Vehicles {
 
     //retorna vehicle de nomVehicle o null si no trobat
     public TipusVehicle find(String nomVehicle){
-        boolean trobat = false;
-        int i = 0;
-        TipusVehicle v=null;
-        while(!trobat && i < this._vehicles.size()){
-            v = this._vehicles.get(i);
+        for(TipusVehicle v : this._vehicles){
             if(v.nomVehicle().equalsIgnoreCase(nomVehicle)){
                 return v;
             }
