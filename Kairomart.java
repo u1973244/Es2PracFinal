@@ -8,38 +8,6 @@ import java.util.Scanner;
 
 public class Kairomart {
 
-
-    private static void lecturaDades(vehiclesDisponibles){
-
-        ArrayList<TipusTerreny> tipusTerrenys = new ArrayList<>();
-
-        try (BufferedReader lector = new BufferedReader(new FileReader("./Dades"))) {
-            String linia;
-
-            while ((linia = lector.readLine()) != null) {
-                String[] parts = linia.split(",");
-                if(parts[0].trim()=="tipusTerreny"){
-                    String nom = parts[1].trim();
-                    int id = Integer.parseInt(parts[2].trim());
-                    tipusTerrenys.add(new TipusTerreny(nom, id));
-                }
-
-                System.out.println(linia);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        vehiclesDisponibles= new Vehicles(vehicles);
-
-        // vincular llista de vehicles a jugadors
-        for(Jugador j : jugadors){
-            j.vincularVehicles(vehiclesDisponibles);
-        }
-
-    }
-
     private static void prepararParticipacio(){
 
         Scanner scanner = new Scanner(System.in);
@@ -96,8 +64,9 @@ public class Kairomart {
 
 
     public static void main(String[] args) {
-        Vehicles vehiclesDisponibles;
-        lecturaDades(vehiclesDisponibles);
+
+        Jugadors jugadors = new Jugadors("DadesJugadors");
+        Vehicles vehiclesDisponibles = new Vehicles("DadesVehicles");
 
         Scanner scanner = new Scanner(System.in);
         int opcio;
