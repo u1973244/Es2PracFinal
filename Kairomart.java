@@ -28,7 +28,7 @@ public class Kairomart {
         System.out.println("\n-MOURE VEHICLE-");
         System.out.println("-VEHICLES EN CURSA-");
         c.mostraVehicles();
-        System.out.print("Entra Vehicle: ");
+        System.out.print("Entra id Vehicle: ");
         String idVehicle = LectorEntrada.llegir();
         VehicleEnCursa v;
         try {
@@ -54,40 +54,28 @@ public class Kairomart {
         }
         
         //ENTRAR DADES MOVIMENT
-        System.out.print("-ENTRA DADES MOVIMENT-");
-        System.out.print("Accelerar o Frenar:\n");
-        System.out.print("- W - Accelerar\n- S - Frenar\n- X - Mantenir Velocitat\n");
-        String accel = LectorEntrada.llegir();
-        while((accel != "W") && (accel != "S") && (accel != "X")){
+        System.out.print("-ENTRA DADES MOVIMENT- \n");
+        System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
+        String option = LectorEntrada.llegir();
+        while((option != "W") && (option != "S") && (option != "X") && (option != "Z")){
             System.out.println("-ERROR D'ENTRADA DADES-");
-            System.out.print("Accelerar o Frenar:\n");
-            accel = LectorEntrada.llegir();
+            System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
+            option = LectorEntrada.llegir();
         }  
-        System.out.print("Girar Esquerra o Dreta:");
-        System.out.print("- A - Esquerra\n- D - Dreta\n- X - Recte\n");
-        String gir = LectorEntrada.llegir();
-        while(gir != "A" && gir != "D" && gir != "X"){
-            System.out.println("-ERROR D'ENTRADA DADES-");
-            System.out.print("Girar Esquerra o Dreta:");
-            gir = LectorEntrada.llegir();
+        switch (option) {
+            case "W":
+                v.avança();
+                break;
+            case "S":
+                v.recula();
+                break;
+            case "3":
+                v.atura();
+                break;
+            case "Z":
+                v.gira(10);
+                break;
         }
-
-        //APLICAR MOVIMENT AL VEHICLE
-        if(gir =="A"){
-           v.gira(-1);
-        }
-        else if (gir=="D"){
-            v.gira(1);
-        }
-        if (accel == "W"){
-            v.avança();
-        }
-        else if (accel == "S"){
-            v.recula();
-        }
-        
-        //MOSTRAR EL MOVIMENT QUE S'HA FET
-        v.mostrarMoviment();
         
     }
 

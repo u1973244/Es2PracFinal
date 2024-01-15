@@ -102,7 +102,7 @@ public class VehicleEnCursa {
     }
 
     public void mostraParticipant(){
-        System.out.print(_jugador.nomJugador() + "   " + _personatge.nomPersonatge() + "   " + _tipusVehicle.nomVehicle());
+        System.out.print(_jugador.nomJugador() + "   " + _personatge.nomPersonatge() + "   " + _tipusVehicle.nomVehicle() + "\n");
     }
 
     public String nomTipusVehicle(){

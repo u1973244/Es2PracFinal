@@ -8,6 +8,8 @@ public class Cursa {
     private boolean _comencada;
     private boolean _acabada;
     private TipusTerreny _terreny;
+    private int _lastId=0;
+
 
     private ArrayList<VehicleEnCursa> vehiclesParticipants=new ArrayList<VehicleEnCursa>();;
     private Terrenys _terrenys;
@@ -28,7 +30,8 @@ public class Cursa {
 
     //omplir
     public VehicleEnCursa apuntarse(Jugador j, TipusVehicle vehicle, Personatge personatge){
-        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this,freeId());
+        VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this,_lastId);
+        _lastId++;
         this.vehiclesParticipants.add(v);
         return v;
     }
@@ -41,12 +44,12 @@ public class Cursa {
         System.out.println("-------PARTICIPANTS A LA CURSA--------");
         for(VehicleEnCursa v: vehiclesParticipants){
             v.mostraParticipant();
-            System.out.println("\n");
         }
     }
     public void mostraVehicles(){
         for(VehicleEnCursa v: vehiclesParticipants){
-            v.nomTipusVehicle();
+            System.out.println("id: " + String.valueOf(v.getId())+ " ");
+            v.mostraParticipant();
         }
     }
 
@@ -81,12 +84,4 @@ public class Cursa {
         return this._terrenys.TipusA(posY);
     }
 
-
-    private int freeId(){
-        int max=0;
-        for(VehicleEnCursa v : vehiclesParticipants){
-            max=Math.max(max,v.getId());
-        }
-        return max;
-    }
 }
