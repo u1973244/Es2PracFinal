@@ -79,7 +79,7 @@ public class Jugador {
         String nomPersonatge = scanner.nextLine();
         scanner.close();
         for(Personatge p : personatges){
-            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
+            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge) && p.elegible()){
                 p.escollir();
                 return p;
             }
