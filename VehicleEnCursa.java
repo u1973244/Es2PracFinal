@@ -2,7 +2,7 @@ public class VehicleEnCursa {
     private int _id;
     private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
-    private int _acceleracio; //sapiguer si frena o accelera
+    private int _acceleracio1; //sapiguer si frena o accelera
     private int _voltes;
     private double _temps;
     private PerfilConduccio _perfil;
@@ -11,6 +11,9 @@ public class VehicleEnCursa {
     private Cursa _cursa;
     private Jugador _jugador;
 
+    private Vector2 _posicio;
+    private Vector2 _velocitat;
+    private Vector2 _acceleracio;
 
     public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c, int id){
         this._id = id;
@@ -18,25 +21,28 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
-        this._pos=new Posicio(0,c._posFinal,c._posInicial);
-        this._vel = 0;
-        this._acceleracio = 0;
         this._voltes = 0;
         this._temps = 0;
+
+        this._posicio=c.posInicial(_id); //La cursa només importa el progrés a l'eix y, per tant es posen al mateix y de sortida i a un pos x diferent segons l'id
+        this._velocitat=new Vector2(0, 0);
+        this._acceleracio=new Vector2(0, 0);
     }
 
     public int getId(){
         return _id;
     }
 
-    public Posicio getPos(){
-        return _pos;
+    public Vector2 getPos(){
+        return _posicio;
     }
 
     public boolean canviarPersonatge(Personatge personatge){
-        //s'ha de verificar que ningú estigui fent servir aquell personatge a la cursa, si s'està fent servir, no es canvia i es retorna false, si s'ha pogut canviar es retorna true.
-        //_personatge = personatge;
-        return true;
+        if(personatge.elegible()){
+            _personatge = personatge;
+            return true;
+        } 
+        return false;
     }
 
     public void canviarPerfil(PerfilConduccio tipus){
@@ -48,21 +54,21 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
-        _acceleracio = 1;
+        _acceleracio1 = 1;
         double nou = _pos.getPunt();
         _tipusVehicle.accelerar(nou, _vel); 
         if(_pos.ModificarPunt(nou))_voltes+=1;
     }
 
     public void recula(){ //frenar
-        _acceleracio = -1;
+        _acceleracio1 = -1;
         double avenç= _pos.getPunt();
         _tipusVehicle.frenar(avenç, _vel); 
         _pos.ModificarPunt(avenç);
     }
 
     public void manteVelocitat(){
-        _acceleracio = 0;
+        _acceleracio1 = 0;
     }
 
     public void gira(double valor){

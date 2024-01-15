@@ -8,12 +8,10 @@ public class Cursa {
     private boolean _comencada;
     private boolean _acabada;
     private TipusTerreny _terreny;
-    public double _posInicial;
-    public double _posFinal; //per a que vehicle en cursa pugui veure on Inicia i caba volta
 
     private List<VehicleEnCursa> vehiclesParticipants;
     private Terrenys terrenys;
-    private Personatges personatges;
+    private Personatges _personatges;
 
 
     //constructor amb parametres
@@ -23,9 +21,7 @@ public class Cursa {
         this._duradaVoltes=durada;
         this._comencada=false;
         this._acabada=false;
-        this._posInicial=0;
-        this._posFinal = 100;
-        this.personatges=new Personatges("DadesPersonatge");
+        this._personatges=new Personatges("DadesPersonatge");
         this.terrenys=terrenys;
     }
 
@@ -53,19 +49,20 @@ public class Cursa {
     }
 
     public VehicleEnCursa findVehicle(int idVehicle){
-        boolean trobat = false;
-        int i = 0;
         for(VehicleEnCursa v : vehiclesParticipants){
             if(v.getId()==idVehicle){
-                trobat = true;
                 return v;
             }
         }
         return null;
     }
 
+
     public ArrayList<Personatge> personatgesDisponibles(){
-        return this.personatges.disponibles();
+        return this._personatges.disponibles();
+    }
+    public Vector2 posInicial(int id){
+        return new Vector2(id,0);
     }
 
 

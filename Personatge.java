@@ -12,7 +12,7 @@ public class Personatge {
     }
 
     public boolean elegible(){
-        return _escollit;
+        return !_escollit;
     }
     public void escollir(){
         _escollit = true;
