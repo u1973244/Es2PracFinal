@@ -69,7 +69,7 @@ public class Kairomart {
             case "S":
                 v.recula();
                 break;
-            case "3":
+            case "X":
                 v.atura();
                 break;
             case "Z":
