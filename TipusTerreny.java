@@ -21,6 +21,6 @@ public class TipusTerreny {
     }
 
     public double roughness(){
-        return this.roughness();
+        return this._roughness;
     }
 }

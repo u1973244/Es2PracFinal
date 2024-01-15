@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Jugadors {
-    private ArrayList<Jugador> _jugadors = new ArrayList<>();
+    private ArrayList<Jugador> _jugadors = new ArrayList<Jugador>();
 
     public Jugadors(String document, Vehicles vehicles){
 
@@ -14,7 +14,7 @@ public class Jugadors {
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
 
-                this._jugadors.add(new Jugador(Integer.parseInt(parts[1].trim()),parts[2].trim(),vehicles));
+                this._jugadors.add(new Jugador(Integer.parseInt(parts[0].trim()),parts[1].trim(),vehicles));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -23,7 +23,7 @@ public class Jugadors {
 
     public Jugador find(String nomJugador){
         for(Jugador j : _jugadors){
-            if(j.nomJugador()==nomJugador) return j;
+            if(j.nomJugador().equals(nomJugador)) return j;
         }
         return null;
     }

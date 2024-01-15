@@ -9,7 +9,7 @@ public class Cursa {
     private boolean _acabada;
     private TipusTerreny _terreny;
 
-    private List<VehicleEnCursa> vehiclesParticipants;
+    private ArrayList<VehicleEnCursa> vehiclesParticipants=new ArrayList<VehicleEnCursa>();;
     private Terrenys _terrenys;
     private Personatges _personatges;
 
@@ -21,7 +21,7 @@ public class Cursa {
         this._duradaVoltes=durada;
         this._comencada=false;
         this._acabada=false;
-        this._personatges=new Personatges("DadesPersonatge");
+        this._personatges=new Personatges("DadesPersonatges");
         this._terrenys=terrenys;
     }
 
@@ -29,7 +29,7 @@ public class Cursa {
     //omplir
     public VehicleEnCursa apuntarse(Jugador j, TipusVehicle vehicle, Personatge personatge){
         VehicleEnCursa v =new VehicleEnCursa(j,vehicle,personatge,this,freeId());
-        vehiclesParticipants.add(v);
+        this.vehiclesParticipants.add(v);
         return v;
     }
 
@@ -38,8 +38,10 @@ public class Cursa {
     }
 
     public void mostraParticipants(){
+        System.out.println("-------PARTICIPANTS A LA CURSA--------");
         for(VehicleEnCursa v: vehiclesParticipants){
             v.mostraParticipant();
+            System.out.println("\n");
         }
     }
     public void mostraVehicles(){

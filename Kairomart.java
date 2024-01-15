@@ -1,38 +1,35 @@
-import java.util.Scanner;
+
 
 public class Kairomart {
 
     private static void prepararParticipacio(Jugadors jugadors, Cursa c){
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
         System.out.println("-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
         jugadors.mostra();
-        System.out.print("Entra l'ID del Jugador: ");
-        String nomJugador = scanner.nextLine();
+        System.out.print("Entra el nom del Jugador: ");
+        String nomJugador = LectorEntrada.llegir();
         Jugador j=jugadors.find(nomJugador);
         while(j==null){
             System.out.println("-JUGADOR NO EXISTEIX-");
-            System.out.println("-JUGADOR AMB ELS QUE ET POTS IDENTIFICAR-");
+            System.out.println("-JUGADORS AMB ELS QUE ET POTS IDENTIFICAR-");
             jugadors.mostra();
-            System.out.print("Entra l'ID del Jugador: ");
-            nomJugador = scanner.nextLine();
+            System.out.print("Entra el nom del Jugador: ");
+            nomJugador = LectorEntrada.llegir();
             j=jugadors.find(nomJugador);
         }
 
         j.participar(c);
-        scanner.close();
 
     }
 
     private static void moureVehicle(Cursa c){
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\n-MOURE VEHICLE-");
         System.out.println("-VEHICLES EN CURSA-");
         c.mostraVehicles();
         System.out.print("Entra Vehicle: ");
-        String idVehicle = scanner.nextLine();
+        String idVehicle = LectorEntrada.llegir();
         VehicleEnCursa v;
         try {
             int idEnter = Integer.parseInt(idVehicle);
@@ -47,7 +44,7 @@ public class Kairomart {
             System.out.println("-VEHICLES EN CURSA-");
             c.mostraVehicles();
             System.out.print("Entra Vehicle: ");
-            idVehicle = scanner.nextLine();
+            idVehicle = LectorEntrada.llegir();
             try {
                 int idEnter = Integer.parseInt(idVehicle);
                 v = c.findVehicle(idEnter);
@@ -60,19 +57,19 @@ public class Kairomart {
         System.out.print("-ENTRA DADES MOVIMENT-");
         System.out.print("Accelerar o Frenar:\n");
         System.out.print("- W - Accelerar\n- S - Frenar\n- X - Mantenir Velocitat\n");
-        String accel = scanner.nextLine();
+        String accel = LectorEntrada.llegir();
         while((accel != "W") && (accel != "S") && (accel != "X")){
             System.out.println("-ERROR D'ENTRADA DADES-");
             System.out.print("Accelerar o Frenar:\n");
-            accel = scanner.nextLine();
+            accel = LectorEntrada.llegir();
         }  
         System.out.print("Girar Esquerra o Dreta:");
         System.out.print("- A - Esquerra\n- D - Dreta\n- X - Recte\n");
-        String gir = scanner.nextLine();
+        String gir = LectorEntrada.llegir();
         while(gir != "A" && gir != "D" && gir != "X"){
             System.out.println("-ERROR D'ENTRADA DADES-");
             System.out.print("Girar Esquerra o Dreta:");
-            gir = scanner.nextLine();
+            gir = LectorEntrada.llegir();
         }
 
         //APLICAR MOVIMENT AL VEHICLE
@@ -92,7 +89,6 @@ public class Kairomart {
         //MOSTRAR EL MOVIMENT QUE S'HA FET
         v.mostrarMoviment();
         
-        scanner.close();
     }
 
     private static void mostrarClassificacioFinal(Cursa c){
@@ -110,8 +106,7 @@ public class Kairomart {
 
         Cursa cursa=new Cursa(3,10,terrenys);
 
-        Scanner scanner = new Scanner(System.in);
-        int opcio;
+        String opcio;
         
         do{
             System.out.println("\nOpcions:");
@@ -121,28 +116,27 @@ public class Kairomart {
             System.out.println("    0. Sortir");
             System.out.print("Entra l'opció: ");
             
-            opcio = scanner.nextInt();
+            opcio = LectorEntrada.llegir();
 
             switch (opcio) {
-                case 1:
+                case "1":
                     prepararParticipacio(jugadors,cursa);
                     break;
-                case 2:
+                case "2":
                     moureVehicle(cursa);
                     break;
-                case 3:
+                case "3":
                     mostrarClassificacioFinal(cursa);
                     break;
-                case 0:
+                case "0":
                     System.out.println("-FINAL-");
                     break;
             
                 default:
                     System.out.println("-Opció no vàlida, tria una opció vàlida-");
             }
-        } while(opcio != 0);
+        } while(opcio != "0");
         
-        scanner.close();
         
     }
 

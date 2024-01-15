@@ -43,7 +43,6 @@ public class Jugador {
         this._vehicle=c.apuntarse(this,v,p);
         this._cursa=c;
 
-        System.out.println("    PARTICIPANTS A LA CURSA:");
         c.mostraParticipants();
     }
 
@@ -55,11 +54,9 @@ public class Jugador {
         System.out.println("    VEHICLES");
         this._vehiclesDisponibles.mostrar();
 
-        Scanner scanner = new Scanner(System.in);
         //TRIAR UN VEHICLE
         System.out.print("Entra nom del Vehicle: ");
-        String nomVehicle = scanner.nextLine();
-        scanner.close();
+        String nomVehicle = LectorEntrada.llegir();
         return this._vehiclesDisponibles.find(nomVehicle);
 
     }
@@ -73,11 +70,9 @@ public class Jugador {
             System.out.println("    -" + personatge.nomPersonatge());
         }
         
-        Scanner scanner = new Scanner(System.in);
         //TRIAR UN PERSONATGE
         System.out.print("Entra nom del Personatge: ");
-        String nomPersonatge = scanner.nextLine();
-        scanner.close();
+        String nomPersonatge = LectorEntrada.llegir();
         for(Personatge p : personatges){
             if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
                 p.escollir();
