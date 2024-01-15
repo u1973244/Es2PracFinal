@@ -6,4 +6,7 @@ public class LectorEntrada {
     public static String llegir() {
         return scanner.nextLine();
     }
+    public static void close() {
+        scanner.close();
+    }
 }

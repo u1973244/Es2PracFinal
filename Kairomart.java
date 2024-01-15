@@ -124,7 +124,7 @@ public class Kairomart {
                     System.out.println("-Opció no vàlida, tria una opció vàlida-");
             }
         } while(opcio != "0");
-        
+        LectorEntrada.close();
         
     }
 

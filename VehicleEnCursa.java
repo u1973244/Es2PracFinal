@@ -30,9 +30,6 @@ public class VehicleEnCursa {
         return _id;
     }
 
-    public Vector2 getPos(){
-        return _posicio;
-    }
     
     public Vector2 pos(){
         return _posicio;
