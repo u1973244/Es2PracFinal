@@ -67,14 +67,16 @@ public class Jugador {
         System.out.println("    PERSONATGES DISPONIBLES");
         ArrayList<Personatge> personatges= c.personatgesDisponibles();
         for(Personatge personatge:personatges){
-            System.out.println("    -" + personatge.nomPersonatge());
+            if (personatge.elegible()){
+                System.out.println("    -" + personatge.nomPersonatge());
+            }
         }
         
         //TRIAR UN PERSONATGE
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = LectorEntrada.llegir();
         for(Personatge p : personatges){
-            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
+            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge) && p.elegible()){
                 p.escollir();
                 return p;
             }
