@@ -21,6 +21,7 @@ public class Kairomart {
         }
 
         j.participar(c);
+        scanner.close();
 
     }
 
@@ -91,7 +92,7 @@ public class Kairomart {
         //MOSTRAR EL MOVIMENT QUE S'HA FET
         v.mostrarMoviment();
         
-
+        scanner.close();
     }
 
     private static void mostrarClassificacioFinal(Cursa c){
