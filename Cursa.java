@@ -10,11 +10,11 @@ public class Cursa {
     public static class ComparadorVehicles implements Comparator<VehicleEnCursa> {
         @Override
         public int compare(VehicleEnCursa obj1, VehicleEnCursa obj2) {
-            if(obj1.voltes()>obj2.voltes()) return 1;
-            else if (obj1.voltes()<obj2.voltes()) return -1;
+            if(obj1.voltes()<obj2.voltes()) return 1;
+            else if (obj1.voltes()>obj2.voltes()) return -1;
             else{// mateixes voltes
-                if(obj1.pos().y()>obj2.pos().y()) return 1;
-                else if(obj1.pos().y()<obj2.pos().y()) return -1;
+                if(obj1.pos().y()<obj2.pos().y()) return 1;
+                else if(obj1.pos().y()>obj2.pos().y()) return -1;
                 else return 0;
             }
             
@@ -32,7 +32,7 @@ public class Cursa {
     private int _lastId=0;
 
 
-    private ArrayList<VehicleEnCursa> vehiclesParticipants=new ArrayList<VehicleEnCursa>();;
+    private ArrayList<VehicleEnCursa> vehiclesParticipants=new ArrayList<VehicleEnCursa>();
     private Terrenys _terrenys;
     private Personatges _personatges;
 
@@ -107,9 +107,17 @@ public class Cursa {
 
     public void mostraClassificacio(){
         ComparadorVehicles comparador = new ComparadorVehicles();
-        Collections.sort(this.vehiclesParticipants, comparador);
+        ArrayList<VehicleEnCursa> copia=new ArrayList<VehicleEnCursa>();
         for(VehicleEnCursa v: this.vehiclesParticipants){
+            copia.add(v);
+        }
+        Collections.sort(copia, comparador);
+        System.out.println("-------CLASSIFICACIO--------\n");
+        int i=1;
+        for(VehicleEnCursa v: copia){
+            System.out.println("Pos #" + String.valueOf(i) + ":");
             v.mostraParticipant();
+            i++;
         }
     }
 

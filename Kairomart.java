@@ -83,7 +83,7 @@ public class Kairomart {
     private static void mostrarClassificacioFinal(Cursa c){
 
         System.out.println("\n-MOSTRAR CLASSIFICACIÓ FINAL-");
-        //MOSTRAR SITUACIÓ CARRERA (vehicle, top, voltes)
+        c.mostraClassificacio();
 
     }
 
