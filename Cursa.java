@@ -114,9 +114,12 @@ public class Cursa {
         Collections.sort(copia, comparador);
         System.out.println("-------CLASSIFICACIO--------\n");
         int i=1;
+
+
         for(VehicleEnCursa v: copia){
             System.out.println("Pos #" + String.valueOf(i) + ":");
             v.mostraParticipant();
+            v.mostrarMoviment();
             i++;
         }
     }
