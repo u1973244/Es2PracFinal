@@ -63,21 +63,21 @@ public class Kairomart {
         }
 
         //APLICAR MOVIMENT AL VEHICLE
+        if(gir =="A"){
+           v.gira(-1);
+        }
+        else if (gir=="D"){
+            v.gira(1);
+        }
         if (accel == "W"){
             v.avança();
         }
         else if (accel == "S"){
             v.recula();
         }
-        if(gir =="A"){
-            
-        }
-        else if (gir=="D"){
-
-        }
-
+        
         //MOSTRAR EL MOVIMENT QUE S'HA FET
-
+        v.mostrarMoviment();
         
 
     }

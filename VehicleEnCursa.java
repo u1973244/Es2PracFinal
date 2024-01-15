@@ -2,7 +2,7 @@ public class VehicleEnCursa {
     private int _id;
     private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
-    private double _acceleracio;
+    private int _acceleracio; //sapiguer si frena o accelera
     private int _voltes;
     private double _temps;
     private PerfilConduccio _perfil;
@@ -48,20 +48,27 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
+        _acceleracio = 1;
         double nou = _pos.getPunt();
         _tipusVehicle.accelerar(nou, _vel); 
         if(_pos.ModificarPunt(nou))_voltes+=1;
     }
 
-    public void recula(){ //frenar pot 
-        double nouPos = _pos.getPunt();
-        _tipusVehicle.frenar(nouPos, _vel); 
-        _pos.ModificarPunt(nouPos);
+    public void recula(){ //frenar
+        _acceleracio = -1;
+        double avenç= _pos.getPunt();
+        _tipusVehicle.frenar(avenç, _vel); 
+        _pos.ModificarPunt(avenç);
+    }
+
+    public void manteVelocitat(){
+        _acceleracio = 0;
     }
 
     public void gira(double valor){
-        if (valor>0) _pos.ModificarRotacio(30);
-        else if (valor < 0) _pos.ModificarRotacio(-30);
+        if (valor>0) _pos.ModificarRotacio(45);
+        else if (valor < 0) _pos.ModificarRotacio(-45);
+        else _pos.ModificarRotacio(0);
     }
 
     public int voltes(){
@@ -83,4 +90,28 @@ public class VehicleEnCursa {
     public String nomTipusVehicle(){
         return _tipusVehicle.nomVehicle();
     }
+
+    public void mostrarMoviment(){
+        String mov;
+        if (_acceleracio==1){
+            mov = "accelera fins assolir una velocitat de "+_vel+ " km/h";
+        }
+        else if(_acceleracio==-1){
+            mov = "frena fins assolir una velocitat de "+_vel+ " km/h";
+        }
+        else{
+            mov = "mante una velocitat de "+_vel+ " km/h";
+        }
+        System.out.print("Vehicle es mou direccio ");
+        int rot  = _pos.getRotacio();
+        if (rot <= -135 || rot >= 135 ) System.out.print("S");
+        else if (rot >= -45 && rot <= 45) System.out.print("N");
+        if (rot <= -45 && rot >= -135) System.out.print("O");
+        else if (rot >= 45 && rot <= 135) System.out.print("E");
+        System.out.print(" i "+mov+"\n");
+        System.out.print("Punt actual del vehicle: "+_pos.getPunt()+"\n");
+        System.out.print("Falten "+_pos.getRestant()+" km per arribar a la meta");
+        
+    }
 }
+

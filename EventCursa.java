@@ -1,6 +1,6 @@
-public class EventCursa {
+public class EventCursa{
 
     public EventCursa (){
-        
+
     }
 }
