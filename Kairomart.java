@@ -123,7 +123,7 @@ public class Kairomart {
                 default:
                     System.out.println("-Opció no vàlida, tria una opció vàlida-");
             }
-        } while(opcio != "0");
+        } while(!opcio.equals("0"));
         LectorEntrada.close();
         
     }
