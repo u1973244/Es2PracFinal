@@ -119,6 +119,7 @@ public class Cursa {
         for(VehicleEnCursa v: copia){
             System.out.println("Pos #" + String.valueOf(i) + ":");
             v.mostraParticipant();
+            v.voltes();
             i++;
         }
     }
