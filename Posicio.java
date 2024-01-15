@@ -1,9 +1,9 @@
 public class Posicio {
     private double _Punt; //valor de 0 a 99 
-    private double _Rotacio; //valor de 0 a 359
+    private int _Rotacio; //valor de 0 a 359
 
     // Constructor
-    public Posicio(double punt, double rot) {
+    public Posicio(double punt, int rot) {
         this._Punt = punt;
         this._Rotacio = rot;
     }

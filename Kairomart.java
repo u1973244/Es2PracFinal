@@ -44,8 +44,37 @@ public class Kairomart {
         }
         
         //ENTRAR DADES MOVIMENT
+        System.out.print("-ENTRA DADES MOVIMENT-");
+        System.out.print("Accelerar o Frenar:\n");
+        System.out.print("- W - Accelerar\n- S - Frenar\n- X - Mantenir Velocitat\n");
+        String accel = scanner.nextLine();
+        while((accel != "W") && (accel != "S") && (accel != "X")){
+            System.out.println("-ERROR D'ENTRADA DADES-");
+            System.out.print("Accelerar o Frenar:\n");
+            accel = scanner.nextLine();
+        }  
+        System.out.print("Girar Esquerra o Dreta:");
+        System.out.print("- A - Esquerra\n- D - Dreta\n- X - Recte\n");
+        String gir = scanner.nextLine();
+        while(gir != "A" && gir != "D" && gir != "X"){
+            System.out.println("-ERROR D'ENTRADA DADES-");
+            System.out.print("Girar Esquerra o Dreta:");
+            gir = scanner.nextLine();
+        }
 
         //APLICAR MOVIMENT AL VEHICLE
+        if (accel == "W"){
+            v.avança();
+        }
+        else if (accel == "S"){
+            v.recula();
+        }
+        if(gir =="A"){
+            
+        }
+        else if (gir=="D"){
+
+        }
 
         //MOSTRAR EL MOVIMENT QUE S'HA FET
 

@@ -4,16 +4,15 @@ class Cavall extends TipusVehicle{
         super(id, nom, vMax, adherencia, resistenciaAlXoc);
     }
 
-    void accelerar(double pos, double vel, double acc){
-        vel = acc;
-        if (vel > vMax) vel=vMax;
-        else if (vel < -vMax) vel=-vMax;
+    void accelerar(double pos, double vel){
+        vel += 1; //1 cavall --> accelera normal
+        if (vel > _vMax) vel=_vMax;
         pos += vel;
     }
 
-    void frenar(double pos, double vel, double acc){
-        vel = acc;
-         if (vel > vMax) vel=vMax;
+    void frenar(double pos, double vel){
+        vel -= 1; //poc pes --> frena ràpid
+        if (vel <= 0) vel=0;
         pos -= vel;
     }
 

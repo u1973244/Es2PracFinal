@@ -18,11 +18,11 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
-        this._pos=c.PosInicial;
+        this._pos=new Posicio(c._posInicial,0);
         this._vel = 0;
         this._acceleracio = 0;
         this._voltes = 0;
-        this._pos = Posicio(0,0);
+        this._pos = new Posicio(0,0);
         this._temps = 0;
     }
 
@@ -30,7 +30,7 @@ public class VehicleEnCursa {
         return _id;
     }
 
-    public Vector2 getPos(){
+    public Posicio getPos(){
         return _pos;
     }
 
@@ -49,12 +49,13 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
-         = _tipusVehicle.accelerar(_pos[0],_vel,_acceleracio);
+        double nouPos = 
+        _pos.ModificarPunt(_tipusVehicle.accelerar(_pos[0],_vel,_acceleracio));
 
     }
 
     public void recula(){ //frenar pot 
-        _tipusVehicle.frenar(_pos[0],_vel,_acceleracio);
+        _tipusVehicle.frenar(,_vel,_acceleracio);
     }
 
     public void gira(double valor){

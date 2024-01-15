@@ -8,7 +8,8 @@ public class Cursa {
     private boolean _comencada;
     private boolean _acabada;
     private TipusTerreny _terreny;
-    private double _PosInicial;
+    public double _posInicial;
+    public double _posFinal; //per a que vehicle en cursa pugui veure on Inicia i caba volta
 
     private List<VehicleEnCursa> vehiclesParticipants;
     private Personatges personatgesDisponibles;
@@ -21,7 +22,8 @@ public class Cursa {
         this._duradaVoltes=durada;
         this._comencada=false;
         this._acabada=false;
-        this._PosInicial=0;
+        this._posInicial=0;
+        this._posFinal = 100;
         this.personatgesDisponibles=new Personatges("DadesPersonatge");
     }
 

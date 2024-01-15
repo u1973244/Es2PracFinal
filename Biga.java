@@ -4,14 +4,14 @@ class Biga extends TipusVehicle{
         super(id, nom, vMax, adherencia, resistenciaAlXoc);
     }
 
-    void accelerar(double pos, double vel, double acc){
-        vel = acc;
+    void accelerar(double pos, double vel){
+        vel += 1.1;
+        if (vel > _vMax) vel=_vMax;
         pos += vel;
     }
-
-    void frenar(double pos, double vel, double acc){
-        vel = acc;
-        pos += vel;
+    void frenar(double pos, double vel){
+        vel -= 0.9;
+        if (vel <= 0) vel=0;
+        pos -= vel;
     }
-
 }
