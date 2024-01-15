@@ -2,9 +2,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Terrenys {
-    private ArrayList<TipusTerreny> _terrenys = new ArrayList<>();
+    private ArrayList<Terreny> _terrenys = new ArrayList<Terreny>();
+    private Set<TipusTerreny> _tipusTerrenys = new HashSet<>();
 
     public Terrenys(String document){
 
@@ -13,8 +16,10 @@ public class Terrenys {
 
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
- 
-                this._terrenys.add(new TipusTerreny(parts[0].trim(),Integer.parseInt(parts[1].trim())));
+                TipusTerreny tipus=new TipusTerreny(parts[0].trim());
+                if(!_tipusTerrenys.contains(tipus)) _tipusTerrenys.add(tipus);
+
+                this._terrenys.add(new Terreny(tipus,Double.parseDouble(parts[1].trim())));
               
             }
         } catch (IOException e) {

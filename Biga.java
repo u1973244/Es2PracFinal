@@ -1,8 +1,7 @@
 class Biga extends TipusVehicle{
     
     Biga(int id, String nom, double vMax, double adherencia, double resistenciaAlXoc){
-        super(id, nom, vMax, adherencia);
-        _resistenciaAlXoc = 1.1;
+        super(id, nom, vMax, adherencia,1.1);
     }
 
     void accelerar(double pos, double vel){
