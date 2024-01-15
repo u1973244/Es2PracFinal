@@ -1,7 +1,8 @@
 class Quadriga extends TipusVehicle{
     
     Quadriga(int id, String nom, double vMax, double adherencia, double resistenciaAlXoc){
-        super(id, nom, vMax, adherencia, resistenciaAlXoc);
+        super(id, nom, vMax, adherencia);
+        _resistenciaAlXoc = 1.2;
     }
 
     void accelerar(double pos, double vel){

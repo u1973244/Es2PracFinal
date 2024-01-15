@@ -20,12 +20,13 @@ public class Posicio {
 
     public void ModificarPunt(double valor){
         this._Punt += valor;
-        if(this._Punt<0){
+        if(valor<0){
             this._Punt+=100;
         }
-        else if(this._Punt>99){
+        else if(valor>99){
             this._Punt-=100;
         }
+        else this._Punt = valor;
     }
  
 }

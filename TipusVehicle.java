@@ -12,11 +12,10 @@ abstract class TipusVehicle {
         return this._nom;
     }
 
-    public TipusVehicle(int id, String nom, double vMax, double adherencia, double resistenciaAlXoc){
+    public TipusVehicle(int id, String nom, double vMax, double adherencia){
         this._id = id;
         this._nom = nom;
         this._vMax = vMax;
         this._adherencia = adherencia;
-        this._resistenciaAlXoc = resistenciaAlXoc;
     }
 }
