@@ -10,29 +10,24 @@ class Quadriga extends TipusVehicle{
     }
 
     @Override
-    public void accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
-        System.out.println("Accelero com una Quadriga a sobre de " + t.tipus() + "\n");
+    public double accelerar(Vector2 pos, double vel, Vector2 dir, TipusTerreny t, boolean endavant){
+        System.out.println("Accelero com una Biga a sobre de " + t.tipus() + "\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
-        double accelAdaptada=adaptacio.adapta(accel);
-        double novaVelocitat=vel.magnitude()+accelAdaptada;
-        vel.normalize();
-        vel.scale(novaVelocitat);
-        if (vel.magnitude()>this._vMax) {
-            vel.normalize();
-            vel.scale(_vMax);
-        }
-        pos.add(vel);
-        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        double accelAdaptada=adaptacio.adapta(this._accel);
+        if(endavant) vel+=accelAdaptada;
+        else vel-=accelAdaptada;
+        pos.add(new Vector2(dir.x()*vel, dir.y()*vel));
+        return vel;
     }
 
     @Override
-    public void frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
-        System.out.println("Freno com una Quadriga a sobre de " + t.tipus() + "\n");
+    public double frenar(Vector2 pos, double vel, Vector2 dir, TipusTerreny t){
+        System.out.println("Freno com una Biga a sobre de " + t.tipus() + "\n");
         double frenada=0.9;
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double frenadaAdaptada=frenada-adaptacio.adapta(frenada);
-        vel.scale(frenadaAdaptada);
-        pos.add(vel);
-        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        vel=vel*frenadaAdaptada;
+        pos.add(new Vector2(dir.x()*vel, dir.y()*vel));
+        return vel;
     }
 }

@@ -1,8 +1,6 @@
 public class VehicleEnCursa {
     private int _id;
-    private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
-    private double _vel;
-    private double _acceleracio; //sapiguer si frena o accelera
+    private Vector2 _dir;
     private int _voltes;
     private double _temps;
     private PerfilConduccio _perfil;
@@ -12,7 +10,7 @@ public class VehicleEnCursa {
     private Jugador _jugador;
 
     private Vector2 _posicio;
-    private Vector2 _velocitat;
+    private double _velocitat;
 
     public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c, int id){
         this._id = id;
@@ -24,8 +22,8 @@ public class VehicleEnCursa {
         this._temps = 0;
 
         this._posicio=c.posInicial(_id); //La cursa només importa el progrés a l'eix y, per tant es posen al mateix y de sortida i a un pos x diferent segons l'id
-        this._velocitat=new Vector2(0, 0.1); // faig que comencin amb velocitat proxima a 0 pero que no sigui 0 perque sino no funciona, solucio chapucera, lo seu seria tenir direccio i velocitat
-        this._acceleracio=5;
+        this._velocitat=0;
+        this._dir=new Vector2(0,1);
     }
 
     public int getId(){
@@ -58,29 +56,29 @@ public class VehicleEnCursa {
 
     public void avança(){ //
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._velocitat=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,true);
         this.comprovaVoltaNova();
     }
 
     public void recula(){
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.accelerar(this._posicio,this._velocitat,-this._acceleracio,t);
+        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,false);
         this.comprovaVoltaNova();
         this.comprovarLimits();
     }
 
     public void atura(){
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.frenar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._tipusVehicle.frenar(this._posicio,this._velocitat,this._dir,t);
         this.comprovaVoltaNova();
         this.comprovarLimits();
     }
 
 
     public void gira(double valor){
-        this._velocitat.rotate(valor);
+        this._dir.rotate(valor);
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._velocitat=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,true);
         this.comprovaVoltaNova();
         this.comprovarLimits();
     }
@@ -104,7 +102,7 @@ public class VehicleEnCursa {
 
 
     public void mostrarMoviment(){
-        System.out.print("Vehicle id: " + String.valueOf(this._id) + " es troba a la posicio: ("+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +") km i es mou amb una velocitat de: (" + String.valueOf(this._velocitat.x()) + "," + String.valueOf(this._velocitat.y()) + ") km/h \n");
+        System.out.print("Vehicle id: " + String.valueOf(this._id) + " es troba a la posicio: ("+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +") km i es mou amb una velocitat de: " + String.valueOf(this._velocitat) + "km/h en direccio: (" + String.valueOf(this._dir.x()) +"," + String.valueOf(this._dir.y()) +") \n");
         System.out.print("Ha completat "+ String.valueOf(this._voltes) +" voltes al circuit \n");      
     }
 
@@ -118,6 +116,10 @@ public class VehicleEnCursa {
     private void comprovarLimits(){
         if(this._posicio.x()>this._cursa.maxX()) this._posicio.set(this._cursa.maxX(), this._posicio.y());
         if(this._posicio.x()<this._cursa.minX()) this._posicio.set(this._cursa.minX(), this._posicio.y());
+    }
+
+    public String nomConductor(){
+        return this._jugador.nomJugador();
     }
 }
 

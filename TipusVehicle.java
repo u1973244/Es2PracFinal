@@ -6,14 +6,15 @@ abstract class TipusVehicle {
     protected int _id;
     protected String _nom;
     protected double _vMax;
+    protected double _accel=7;
     protected double _accelMax;
     protected double _adherencia;
     protected double _resistenciaAlXoc;
     protected double _factorVehicleAdaptacio;
     protected Map<TipusTerreny,AdaptacioTerreny> _adaptacions= new HashMap<TipusTerreny,AdaptacioTerreny>();
 
-    public abstract void accelerar(Vector2 pos, Vector2 vel, double accel, TipusTerreny t);
-    public abstract void frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t);
+    public abstract double accelerar(Vector2 pos, double vel, Vector2 dir, TipusTerreny t, boolean endavant);
+    public abstract double frenar(Vector2 pos, double vel,Vector2 dir, TipusTerreny t);
 
     public String nomVehicle(){
         return this._nom;

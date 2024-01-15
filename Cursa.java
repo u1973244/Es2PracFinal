@@ -83,6 +83,16 @@ public class Cursa {
         return null;
     }
 
+    public VehicleEnCursa findJugador(String nom){
+        for(VehicleEnCursa v : vehiclesParticipants){
+            if(v.nomConductor().equals(nom)){
+                return v;
+            }
+        }
+        return null;
+    }
+
+
 
     public ArrayList<Personatge> personatgesDisponibles(){
         return this._personatges.disponibles();

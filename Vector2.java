@@ -50,4 +50,6 @@ public class Vector2 {
         this._x = xRotat;
         this._y = yRotat;
     }
+
+    
 }
