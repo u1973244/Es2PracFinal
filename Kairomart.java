@@ -2,6 +2,7 @@
 
 public class Kairomart {
 
+
     private static void prepararParticipacio(Jugadors jugadors, Cursa c){
 
         System.out.println("\n-PREPARAR PARTICIPACIÓ-");
@@ -26,28 +27,26 @@ public class Kairomart {
     private static void moureVehicle(Cursa c){
 
         System.out.println("\n-MOURE VEHICLE-");
-        System.out.println("-VEHICLES EN CURSA-");
-        c.mostraVehicles();
-        System.out.print("Entra id Vehicle: ");
-        String idVehicle = LectorEntrada.llegir();
+        System.out.println("-PARTICIPANTS DE LA CURSA-");
+        c.mostraParticipants();
+        System.out.print("Entra nom participant: ");
+        String nomJugador = LectorEntrada.llegir();
         VehicleEnCursa v;
         try {
-            int idEnter = Integer.parseInt(idVehicle);
-            v = c.findVehicle(idEnter);
+            v = c.findJugador(nomJugador);
         } catch (NumberFormatException e) {
             v=null;
         }  
         
         //COMPROVAR SI VEHICLE EXISTEIX
         while(v==null){
-            System.out.println("-VEHICLE NO EXISTEIX-");
-            System.out.println("-VEHICLES EN CURSA-");
-            c.mostraVehicles();
-            System.out.print("Entra Vehicle: ");
-            idVehicle = LectorEntrada.llegir();
+            System.out.println("-JUGADOR NO EXISTEIX-");
+            System.out.println("-PARTICIPANTS DE LA CURSA-");
+            c.mostraParticipants();
+            System.out.print("Entra nom participant: ");
+            nomJugador = LectorEntrada.llegir();
             try {
-                int idEnter = Integer.parseInt(idVehicle);
-                v = c.findVehicle(idEnter);
+                v = c.findJugador(nomJugador);
             } catch (NumberFormatException e) {
                 v=null;
             }  
