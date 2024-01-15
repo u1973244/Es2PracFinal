@@ -2,11 +2,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Vehicles {
     private ArrayList<TipusVehicle> _vehicles = new ArrayList<>();
 
-    public Vehicles(String document){
+    public Vehicles(String document, Set<TipusTerreny> tipus_terrenys){
 
         try (BufferedReader lector = new BufferedReader(new FileReader(document))) {
             String linia;
@@ -15,13 +16,13 @@ public class Vehicles {
                 String[] parts = linia.split(",");
 
                 if(parts[0].trim()=="biga"){
-                    this._vehicles.add(new Biga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                    this._vehicles.add(new Biga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),tipus_terrenys));
                 }
-                else if(parts[3].trim()=="quadriga"){
-                    this._vehicles.add(new Quadriga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                else if(parts[0].trim()=="quadriga"){
+                    this._vehicles.add(new Quadriga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),tipus_terrenys));
                 }
                 else{
-                    this._vehicles.add(new Cavall(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                    this._vehicles.add(new Cavall(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),tipus_terrenys));
                 }
             }
         } catch (IOException e) {

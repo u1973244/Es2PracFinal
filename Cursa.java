@@ -12,11 +12,12 @@ public class Cursa {
     public double _posFinal; //per a que vehicle en cursa pugui veure on Inicia i caba volta
 
     private List<VehicleEnCursa> vehiclesParticipants;
+    private Terrenys terrenys;
     private Personatges personatgesDisponibles;
 
 
     //constructor amb parametres
-    public Cursa(int durada, int maxParticipants){
+    public Cursa(int durada, int maxParticipants, Terrenys terrenys){
         this._id=0;
         this._maxParticipants=maxParticipants;
         this._duradaVoltes=durada;
@@ -25,6 +26,7 @@ public class Cursa {
         this._posInicial=0;
         this._posFinal = 100;
         this.personatgesDisponibles=new Personatges("DadesPersonatge");
+        this.terrenys=terrenys;
     }
 
 
@@ -50,12 +52,11 @@ public class Cursa {
         }
     }
 
-    public VehicleEnCursa findVehicle(String idVehicle){
+    public VehicleEnCursa findVehicle(int idVehicle){
         boolean trobat = false;
         int i = 0;
-        while(!trobat && i<vehiclesParticipants.size()){
-            VehicleEnCursa v = vehiclesParticipants.get(i);
-            if(v.getId().equalsIgnoreCase(idVehicle)){
+        for(VehicleEnCursa v : vehiclesParticipants){
+            if(v.getId()==idVehicle){
                 trobat = true;
                 return v;
             }

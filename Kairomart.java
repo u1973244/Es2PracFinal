@@ -32,7 +32,14 @@ public class Kairomart {
         c.mostraVehicles();
         System.out.print("Entra Vehicle: ");
         String idVehicle = scanner.nextLine();
-        VehicleEnCursa v = c.findVehicle(idVehicle);
+        VehicleEnCursa v;
+        try {
+            int idEnter = Integer.parseInt(idVehicle);
+            v = c.findVehicle(idEnter);
+        } catch (NumberFormatException e) {
+            v=null;
+        }  
+        
         //COMPROVAR SI VEHICLE EXISTEIX
         while(v==null){
             System.out.println("-VEHICLE NO EXISTEIX-");
@@ -40,7 +47,12 @@ public class Kairomart {
             c.mostraVehicles();
             System.out.print("Entra Vehicle: ");
             idVehicle = scanner.nextLine();
-            v = c.findVehicle(idVehicle);
+            try {
+                int idEnter = Integer.parseInt(idVehicle);
+                v = c.findVehicle(idEnter);
+            } catch (NumberFormatException e) {
+                v=null;
+            }  
         }
         
         //ENTRAR DADES MOVIMENT
@@ -91,11 +103,11 @@ public class Kairomart {
 
 
     public static void main(String[] args) {
-
-        Vehicles vehiclesDisponibles = new Vehicles("DadesVehicles");
+        Terrenys terrenys=new Terrenys("DadesTerreny");
+        Vehicles vehiclesDisponibles = new Vehicles("DadesVehicles",terrenys.tipus());
         Jugadors jugadors = new Jugadors("DadesJugadors",vehiclesDisponibles);
 
-        Cursa cursa=new Cursa(3,10);
+        Cursa cursa=new Cursa(3,10,terrenys);
 
         Scanner scanner = new Scanner(System.in);
         int opcio;

@@ -13,17 +13,24 @@ public class Terrenys {
 
         try (BufferedReader lector = new BufferedReader(new FileReader(document))) {
             String linia;
-
+            TipusTerreny tipus=null;
             while ((linia = lector.readLine()) != null) {
-                String[] parts = linia.split(",");
-                TipusTerreny tipus=new TipusTerreny(parts[0].trim(),Double.parseDouble(parts[1].trim()));
-                if(!_tipusTerrenys.contains(tipus)) _tipusTerrenys.add(tipus);
-
-                this._terrenys.add(new Terreny(tipus,Double.parseDouble(parts[2].trim())));
+                if(linia.contains(":")){
+                    String[] parts = linia.split(":");
+                    tipus=new TipusTerreny(parts[0].trim(),Double.parseDouble(parts[1].trim()));
+                    _tipusTerrenys.add(tipus);
+                }
+                else{
+                    this._terrenys.add(new Terreny(tipus,Double.parseDouble(linia.trim())));
+                }
               
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Set<TipusTerreny> tipus(){
+        return _tipusTerrenys;
     }
 }
