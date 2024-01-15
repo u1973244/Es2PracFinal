@@ -53,6 +53,7 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
+        if(this._acceleracio<0) this._acceleracio=0;
         this._acceleracio+=0.5;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
@@ -61,6 +62,7 @@ public class VehicleEnCursa {
     }
 
     public void recula(){
+        if(this._acceleracio>0) this._acceleracio=0;
         this._acceleracio-=0.5;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);

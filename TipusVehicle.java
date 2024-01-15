@@ -24,7 +24,7 @@ abstract class TipusVehicle {
         this._nom = nom;
         this._vMax = vMax;
         this._adherencia = adherencia;
-        this._accelMax=5;
+        this._accelMax=6;
     }
 
     protected void inicialitzarAdaptacions(Set<TipusTerreny> tipus_terrenys){
