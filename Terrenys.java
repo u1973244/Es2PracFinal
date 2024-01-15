@@ -29,6 +29,7 @@ public class Terrenys {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        _tipusTerrenys.add(this._defaultTipus);
     }
 
     public Set<TipusTerreny> tipus(){

@@ -62,14 +62,14 @@ public class VehicleEnCursa {
 
     public void recula(){
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,false);
+        this._velocitat=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,false);
         this.comprovaVoltaNova();
         this.comprovarLimits();
     }
 
     public void atura(){
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._tipusVehicle.frenar(this._posicio,this._velocitat,this._dir,t);
+        this._velocitat=this._tipusVehicle.frenar(this._posicio,this._velocitat,this._dir,t);
         this.comprovaVoltaNova();
         this.comprovarLimits();
     }
