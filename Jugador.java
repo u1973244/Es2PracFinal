@@ -54,7 +54,7 @@ public class Jugador {
         this._vehiclesDisponibles.mostrar();
 
         Scanner scanner = new Scanner(System.in);
-        //TRIAR UN VEHICLE (vincular)
+        //TRIAR UN VEHICLE
         System.out.print("Entra nom del Vehicle: ");
         String nomVehicle = scanner.nextLine();
         scanner.close();
@@ -68,11 +68,13 @@ public class Jugador {
         System.out.println("    PERSONATGES DISPONIBLES");
         ArrayList<Personatge> personatges= new ArrayList<Personatge>();
         for(Personatge personatge:personatges){
-            System.out.println("    -" + personatge.nomPersonatge());
+            if (personatge.elegible()){
+                System.out.println("    -" + personatge.nomPersonatge());
+            }
         }
         
         Scanner scanner = new Scanner(System.in);
-        //TRIAR UN PERSONATGE (vincular + deseleccionar)
+        //TRIAR UN PERSONATGE
         System.out.print("Entra nom del Personatge: ");
         String nomPersonatge = scanner.nextLine();
         scanner.close();
