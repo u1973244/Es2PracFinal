@@ -2,7 +2,7 @@ public class VehicleEnCursa {
     private int _id;
     private Posicio _pos; //primer valor de 0 a 99 per pos , segon valor de 0 a 359 per rotacio
     private double _vel;
-    private int _acceleracio1; //sapiguer si frena o accelera
+    private double _acceleracio; //sapiguer si frena o accelera
     private int _voltes;
     private double _temps;
     private PerfilConduccio _perfil;
@@ -13,7 +13,6 @@ public class VehicleEnCursa {
 
     private Vector2 _posicio;
     private Vector2 _velocitat;
-    private Vector2 _acceleracio;
 
     public VehicleEnCursa(Jugador j,TipusVehicle tipus, Personatge p,Cursa c, int id){
         this._id = id;
@@ -25,8 +24,8 @@ public class VehicleEnCursa {
         this._temps = 0;
 
         this._posicio=c.posInicial(_id); //La cursa només importa el progrés a l'eix y, per tant es posen al mateix y de sortida i a un pos x diferent segons l'id
-        this._velocitat=new Vector2(0, 0);
-        this._acceleracio=new Vector2(0, 0);
+        this._velocitat=new Vector2(0, 0.1); // faig que comencin amb velocitat proxima a 0 pero que no sigui 0 perque sino no funciona, solucio chapucera, lo seu seria tenir direccio i velocitat
+        this._acceleracio=0;
     }
 
     public int getId(){
@@ -54,27 +53,38 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
-        _acceleracio1 = 1;
-        double nou = _pos.getPunt();
-        _tipusVehicle.accelerar(nou, _vel); 
-        if(_pos.ModificarPunt(nou))_voltes+=1;
+        this._acceleracio+=0.5;
+        TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
+        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this.comprovaVoltaNova();
+        this.mostrarMoviment();
     }
 
-    public void recula(){ //frenar
-        _acceleracio1 = -1;
-        double avenç= _pos.getPunt();
-        _tipusVehicle.frenar(avenç, _vel); 
-        _pos.ModificarPunt(avenç);
+    public void recula(){
+        this._acceleracio-=0.5;
+        TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
+        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this.comprovaVoltaNova();
+        this.comprovarLimits();
+        this.mostrarMoviment();
     }
 
-    public void manteVelocitat(){
-        _acceleracio1 = 0;
+    public void atura(){
+        TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
+        this._acceleracio=this._tipusVehicle.frenar(this._posicio,this._velocitat,this._acceleracio,t);
+        this.comprovaVoltaNova();
+        this.comprovarLimits();
+        this.mostrarMoviment();
     }
+
 
     public void gira(double valor){
-        if (valor>0) _pos.ModificarRotacio(45);
-        else if (valor < 0) _pos.ModificarRotacio(-45);
-        else _pos.ModificarRotacio(0);
+        this._velocitat.rotate(valor);
+        TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
+        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this.comprovaVoltaNova();
+        this.comprovarLimits();
+        this.mostrarMoviment();
     }
 
     public int voltes(){
@@ -118,6 +128,18 @@ public class VehicleEnCursa {
         System.out.print("Punt actual del vehicle: "+_pos.getPunt()+"\n");
         System.out.print("Falten "+_pos.getRestant()+" km per arribar a la meta");
         
+    }
+
+    private void comprovaVoltaNova(){
+        if(this._posicio.y()>this._cursa.posFinalVolta()){
+            this._voltes++;
+            this._posicio=this._cursa.posInicial(this._id);
+        }
+    }
+
+    private void comprovarLimits(){
+        if(this._posicio.x()>this._cursa.maxX()) this._posicio.set(this._cursa.maxX(), this._posicio.y());
+        if(this._posicio.x()<this._cursa.minX()) this._posicio.set(this._cursa.minX(), this._posicio.y());
     }
 }
 

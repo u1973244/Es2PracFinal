@@ -10,14 +10,14 @@ class Biga extends TipusVehicle{
     }
 
     @Override
-    public void accelerar(double pos, double vel){
+    public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
         vel += 1.1; //mutiplicar per parametre terreny de 1 a 0.5?
         if (vel > _vMax) vel=_vMax;
         pos += vel;
     }
 
     @Override
-    public void frenar(double pos, double vel){
+    public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
         vel -= 0.9;
         if (vel <= 0) vel=0;
         pos -= vel;

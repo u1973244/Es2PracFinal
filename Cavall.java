@@ -10,17 +10,20 @@ class Cavall extends TipusVehicle{
     }
 
     @Override
-    public void accelerar(double pos, double vel){
-        vel += 1; //1 cavall --> accelera normal
-        if (vel > _vMax) vel=_vMax;
-        pos += vel;
+    public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+
     }
 
     @Override
-    public void frenar(double pos, double vel){
-        vel -= 1; //poc pes --> frena ràpid
-        if (vel <= 0) vel=0;
-        pos -= vel;
+    public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){ // Cavall no pot frenar, només pot deixar d'accelerar i que el freni el terra si és que ho fa
+        AdaptacioTerreny adaptacio=_adaptacions.get(t);
+        accel=adaptacio.adapta(accel);
+        double velMagnitud=adaptacio.adapta(vel.magnitude());
+        vel.normalize();
+        vel.scale(velMagnitud);
+        pos.add(vel);
+        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        return accel;
     }
 
 }

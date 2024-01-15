@@ -10,16 +10,30 @@ class Quadriga extends TipusVehicle{
     }
 
     @Override
-    public void accelerar(double pos, double vel){
-        vel += 1.2; //4 cavalls --> accelera més ràpid
-        if (vel > _vMax) vel=_vMax;
-        pos += vel;
+    public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+        AdaptacioTerreny adaptacio=_adaptacions.get(t);
+        double accelAdaptada=adaptacio.adapta(accel);
+        double novaVelocitat=vel.magnitude()+accelAdaptada;
+        vel.normalize();
+        vel.scale(novaVelocitat);
+        if (vel.magnitude()>this._vMax) {
+            vel.normalize();
+            vel.scale(_vMax);
+        }
+        pos.add(vel);
+        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        if(accel>0) return Math.min(this._accelMax, accel);
+        else return Math.max(-this._accelMax, accel);
     }
 
     @Override
-    public void frenar(double pos, double vel){
-        vel -= 0.8; //molt més pesat frenara menys 
-        if (vel <= 0) vel=0;
-        pos -= vel;
+    public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+        double frenada=0.9;
+        AdaptacioTerreny adaptacio=_adaptacions.get(t);
+        double frenadaAdaptada=frenada-adaptacio.adapta(frenada);
+        vel.scale(frenadaAdaptada);
+        pos.add(vel);
+        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        return accel*frenadaAdaptada;
     }
 }

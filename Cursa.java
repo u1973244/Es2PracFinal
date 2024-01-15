@@ -10,7 +10,7 @@ public class Cursa {
     private TipusTerreny _terreny;
 
     private List<VehicleEnCursa> vehiclesParticipants;
-    private Terrenys terrenys;
+    private Terrenys _terrenys;
     private Personatges _personatges;
 
 
@@ -22,7 +22,7 @@ public class Cursa {
         this._comencada=false;
         this._acabada=false;
         this._personatges=new Personatges("DadesPersonatge");
-        this.terrenys=terrenys;
+        this._terrenys=terrenys;
     }
 
 
@@ -61,8 +61,22 @@ public class Cursa {
     public ArrayList<Personatge> personatgesDisponibles(){
         return this._personatges.disponibles();
     }
+
     public Vector2 posInicial(int id){
         return new Vector2(id,0);
+    }
+    public double posFinalVolta(){
+        return 100;
+    }
+    public double maxX(){
+        return 10;
+    }
+    public double minX(){
+        return -10;
+    }
+
+    public TipusTerreny tipusTerrenyA(double posY){
+        return this._terrenys.TipusA(posY);
     }
 
 

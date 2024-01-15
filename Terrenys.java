@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Terrenys {
+    private TipusTerreny _defaultTipus=new TipusTerreny("default",1);
     private ArrayList<Terreny> _terrenys = new ArrayList<Terreny>();
     private Set<TipusTerreny> _tipusTerrenys = new HashSet<>();
 
@@ -32,5 +33,12 @@ public class Terrenys {
 
     public Set<TipusTerreny> tipus(){
         return _tipusTerrenys;
+    }
+
+    public TipusTerreny TipusA(double posY){
+        for(Terreny t: _terrenys){
+            if (t.contains(posY)) return t.tipus();
+        }
+        return _defaultTipus;
     }
 }

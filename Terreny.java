@@ -8,4 +8,13 @@ public class Terreny {
         this._pos=pos;
         this._mida=10; // suposem que tots tenen la mateixa mida
     }
+
+    public boolean contains(double pos){
+        if(pos<this._pos+this._mida/2 && pos>this._pos-this._mida/2) return true;
+        else return false;
+    }
+
+    public TipusTerreny tipus(){
+        return this._tipus;
+    }
 }
