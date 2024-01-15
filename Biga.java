@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.Set;
 
 class Biga extends TipusVehicle{
@@ -12,7 +11,7 @@ class Biga extends TipusVehicle{
 
     @Override
     public void accelerar(double pos, double vel){
-        vel += 1.1;
+        vel += 1.1; //mutiplicar per parametre terreny de 1 a 0.5?
         if (vel > _vMax) vel=_vMax;
         pos += vel;
     }

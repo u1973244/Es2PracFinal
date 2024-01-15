@@ -5,7 +5,7 @@ public class Posicio {
     private double _PosMin;
 
     // Constructor
-    public Posicio(double punt, int rot, double max, double min) {
+    public Posicio(int rot, double max, double min) {
         this._Punt = min;
         this._Rotacio = rot;
         this._PosMax = max;
