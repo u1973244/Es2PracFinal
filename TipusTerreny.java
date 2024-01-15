@@ -23,4 +23,8 @@ public class TipusTerreny {
     public double roughness(){
         return this._roughness;
     }
+
+    public String tipus(){
+        return this._tipus;
+    }
 }

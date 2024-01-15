@@ -11,7 +11,7 @@ class Quadriga extends TipusVehicle{
 
     @Override
     public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
-        System.out.println("Accelero com una Quadriga\n");
+        System.out.println("Accelero com una Quadriga a sobre de " + t.tipus() + "\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double accelAdaptada=adaptacio.adapta(accel);
         double novaVelocitat=vel.magnitude()+accelAdaptada;
@@ -29,7 +29,7 @@ class Quadriga extends TipusVehicle{
 
     @Override
     public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
-        System.out.println("Freno com una Quadriga\n");
+        System.out.println("Freno com una Quadriga a sobre de " + t.tipus() + "\n");
         double frenada=0.9;
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double frenadaAdaptada=frenada-adaptacio.adapta(frenada);
