@@ -13,7 +13,7 @@ public class Cursa {
 
     private List<VehicleEnCursa> vehiclesParticipants;
     private Terrenys terrenys;
-    private Personatges personatgesDisponibles;
+    private Personatges personatges;
 
 
     //constructor amb parametres
@@ -25,7 +25,7 @@ public class Cursa {
         this._acabada=false;
         this._posInicial=0;
         this._posFinal = 100;
-        this.personatgesDisponibles=new Personatges("DadesPersonatge");
+        this.personatges=new Personatges("DadesPersonatge");
         this.terrenys=terrenys;
     }
 
@@ -62,6 +62,10 @@ public class Cursa {
             }
         }
         return null;
+    }
+
+    public ArrayList<Personatge> personatgesDisponibles(){
+        return this.personatges.disponibles();
     }
 
 

@@ -7,6 +7,7 @@ public class Jugador {
     private String _nom;
     private Vehicles _vehiclesDisponibles;
     private VehicleEnCursa _vehicle=null;
+    private Cursa _cursa;
 
 
     public Jugador(int id, String nom, Vehicles vehicles){
@@ -40,6 +41,7 @@ public class Jugador {
         }
 
         this._vehicle=c.apuntarse(this,v,p);
+        this._cursa=c;
 
         System.out.println("    PARTICIPANTS A LA CURSA:");
         c.mostraParticipants();
@@ -66,11 +68,9 @@ public class Jugador {
         
         //MOSTRAR PERSONATGES DISPONIBLES
         System.out.println("    PERSONATGES DISPONIBLES");
-        ArrayList<Personatge> personatges= new ArrayList<Personatge>();
+        ArrayList<Personatge> personatges= c.personatgesDisponibles();
         for(Personatge personatge:personatges){
-            if (personatge.elegible()){
-                System.out.println("    -" + personatge.nomPersonatge());
-            }
+            System.out.println("    -" + personatge.nomPersonatge());
         }
         
         Scanner scanner = new Scanner(System.in);
@@ -79,7 +79,7 @@ public class Jugador {
         String nomPersonatge = scanner.nextLine();
         scanner.close();
         for(Personatge p : personatges){
-            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge) && p.elegible()){
+            if(p.nomPersonatge().equalsIgnoreCase(nomPersonatge)){
                 p.escollir();
                 return p;
             }

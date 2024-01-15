@@ -22,4 +22,12 @@ public class Personatges {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<Personatge> disponibles(){
+        ArrayList<Personatge> res=new ArrayList<Personatge>();
+        for(Personatge p: this._personatges){
+            if(p.elegible()) res.add(p);
+        }
+        return res;
+    }
 }
