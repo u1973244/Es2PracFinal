@@ -15,13 +15,13 @@ public class Vehicles {
                 String[] parts = linia.split(",");
 
                 if(parts[0].trim()=="biga"){
-                    this._vehicles.add(new Biga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                    this._vehicles.add(new Biga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Set<TipusTerreny>("SetTerrenys")));
                 }
                 else if(parts[3].trim()=="quadriga"){
-                    this._vehicles.add(new Quadriga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                    this._vehicles.add(new Quadriga(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Set<TipusTerreny>("SetTerrenys")));
                 }
                 else{
-                    this._vehicles.add(new Cavall(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Double.parseDouble(parts[5].trim())));
+                    this._vehicles.add(new Cavall(Integer.parseInt(parts[1].trim()),parts[2].trim(),Double.parseDouble(parts[3].trim()),Double.parseDouble(parts[4].trim()),Set<TipusTerreny>("SetTerrenys")));
                 }
             }
         } catch (IOException e) {
