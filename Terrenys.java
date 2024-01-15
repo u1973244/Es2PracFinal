@@ -16,10 +16,10 @@ public class Terrenys {
 
             while ((linia = lector.readLine()) != null) {
                 String[] parts = linia.split(",");
-                TipusTerreny tipus=new TipusTerreny(parts[0].trim());
+                TipusTerreny tipus=new TipusTerreny(parts[0].trim(),Double.parseDouble(parts[1].trim()));
                 if(!_tipusTerrenys.contains(tipus)) _tipusTerrenys.add(tipus);
 
-                this._terrenys.add(new Terreny(tipus,Double.parseDouble(parts[1].trim())));
+                this._terrenys.add(new Terreny(tipus,Double.parseDouble(parts[2].trim())));
               
             }
         } catch (IOException e) {

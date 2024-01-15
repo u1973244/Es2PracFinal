@@ -6,6 +6,6 @@ public class Terreny {
     public Terreny(TipusTerreny tipus, double pos){
         this._tipus=tipus;
         this._pos=pos;
-        this._mida=10;
+        this._mida=10; // suposem que tots tenen la mateixa mida
     }
 }

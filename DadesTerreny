@@ -1,6 +1,7 @@
-asfalt,0
-sorra,10
-gespa,20
-asfalt,30
-sorra,40
-fusta,50
+asfalt,0.5,0
+sorra,0.8,10
+gespa,1,20
+asfalt,0.5,30
+sorra,0.8,40
+fusta,0.4,50
+gel,0.1,60

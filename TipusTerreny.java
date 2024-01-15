@@ -1,8 +1,10 @@
 public class TipusTerreny {
     private String _tipus;
+    private double _roughness;
 
-    public TipusTerreny(String tipus){
+    public TipusTerreny(String tipus, double roughness){
         this._tipus=tipus;
+        this._roughness=roughness;
     }
 
     @Override
@@ -16,5 +18,9 @@ public class TipusTerreny {
     @Override
     public int hashCode() {
         return this._tipus.hashCode();
+    }
+
+    public double roughness(){
+        return this.roughness();
     }
 }
