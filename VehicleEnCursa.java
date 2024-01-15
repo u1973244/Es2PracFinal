@@ -18,11 +18,10 @@ public class VehicleEnCursa {
         this._tipusVehicle=tipus;
         this._personatge=p;
         this._cursa=c;
-        this._pos=new Posicio(c._posInicial,0);
+        this._pos=new Posicio(0,c._posFinal,c._posInicial);
         this._vel = 0;
         this._acceleracio = 0;
         this._voltes = 0;
-        this._pos = new Posicio(0,0);
         this._temps = 0;
     }
 
@@ -49,17 +48,20 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
-        double nouPos = 
-        _pos.ModificarPunt(_tipusVehicle.accelerar(_pos[0],_vel,_acceleracio));
-
+        double nou = _pos.getPunt();
+        _tipusVehicle.accelerar(nou, _vel); 
+        if(_pos.ModificarPunt(nou))_voltes+=1;
     }
 
     public void recula(){ //frenar pot 
-        _tipusVehicle.frenar(,_vel,_acceleracio);
+        double nouPos = _pos.getPunt();
+        _tipusVehicle.frenar(nouPos, _vel); 
+        _pos.ModificarPunt(nouPos);
     }
 
     public void gira(double valor){
-        _pos.ModificarRotacio(valor);
+        if (valor>0) _pos.ModificarRotacio(30);
+        else if (valor < 0) _pos.ModificarRotacio(-30);
     }
 
     public int voltes(){
