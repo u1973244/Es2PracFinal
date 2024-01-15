@@ -25,7 +25,7 @@ public class VehicleEnCursa {
 
         this._posicio=c.posInicial(_id); //La cursa només importa el progrés a l'eix y, per tant es posen al mateix y de sortida i a un pos x diferent segons l'id
         this._velocitat=new Vector2(0, 0.1); // faig que comencin amb velocitat proxima a 0 pero que no sigui 0 perque sino no funciona, solucio chapucera, lo seu seria tenir direccio i velocitat
-        this._acceleracio=0;
+        this._acceleracio=5;
     }
 
     public int getId(){
@@ -53,40 +53,32 @@ public class VehicleEnCursa {
     }
 
     public void avança(){ //
-        if(this._acceleracio<0) this._acceleracio=0;
-        this._acceleracio+=1;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
-        this.mostrarMoviment();
     }
 
     public void recula(){
-        if(this._acceleracio>0) this._acceleracio=0;
-        this._acceleracio-=1;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._tipusVehicle.accelerar(this._posicio,this._velocitat,-this._acceleracio,t);
         this.comprovaVoltaNova();
         this.comprovarLimits();
-        this.mostrarMoviment();
     }
 
     public void atura(){
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._acceleracio=this._tipusVehicle.frenar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._tipusVehicle.frenar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
         this.comprovarLimits();
-        this.mostrarMoviment();
     }
 
 
     public void gira(double valor){
         this._velocitat.rotate(valor);
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
         this.comprovarLimits();
-        this.mostrarMoviment();
     }
 
     public int voltes(){
@@ -97,9 +89,6 @@ public class VehicleEnCursa {
         return _temps;
     }
 
-    public void actualitza(EventCursa ev){
-
-    }
 
     public void mostraParticipant(){
         System.out.print(_jugador.nomJugador() + "   " + _personatge.nomPersonatge() + "   " + _tipusVehicle.nomVehicle() + "\n");
@@ -117,7 +106,7 @@ public class VehicleEnCursa {
     private void comprovaVoltaNova(){
         if(this._posicio.y()>this._cursa.posFinalVolta()){
             this._voltes++;
-            this._posicio=this._cursa.posInicial(this._id);
+            this._posicio=new Vector2(this._posicio.x(),this._cursa.posInicial(this._id).y()+(this._posicio.y()-this._cursa.posFinalVolta()));
         }
     }
 

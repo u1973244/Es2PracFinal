@@ -55,9 +55,9 @@ public class Kairomart {
         
         //ENTRAR DADES MOVIMENT
         System.out.print("-ENTRA DADES MOVIMENT- \n");
-        System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
+        System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n- Z - Girar\\n");
         String option = LectorEntrada.llegir();
-        while((option != "W") && (option != "S") && (option != "X") && (option != "Z")){
+        while((!option.equals("W")) && (!option.equals("S")) && (!option.equals("X")) && (!option.equals("Z"))){
             System.out.println("-ERROR D'ENTRADA DADES-");
             System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
             option = LectorEntrada.llegir();
@@ -76,6 +76,7 @@ public class Kairomart {
                 v.gira(10);
                 break;
         }
+        v.mostrarMoviment();
         
     }
 
