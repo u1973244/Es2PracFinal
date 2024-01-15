@@ -1,7 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
+
+
 
 public class Cursa {
+
+    public static class ComparadorVehicles implements Comparator<VehicleEnCursa> {
+        @Override
+        public int compare(VehicleEnCursa obj1, VehicleEnCursa obj2) {
+            if(obj1.voltes()>obj2.voltes()) return 1;
+            else if (obj1.voltes()<obj2.voltes()) return -1;
+            else{// mateixes voltes
+                if(obj1.pos().y()>obj2.pos().y()) return 1;
+                else if(obj1.pos().y()<obj2.pos().y()) return -1;
+                else return 0;
+            }
+            
+        }
+    }
+
+
+
     private int _id;
     private int _maxParticipants;
     private int _duradaVoltes;
@@ -82,6 +103,14 @@ public class Cursa {
 
     public TipusTerreny tipusTerrenyA(double posY){
         return this._terrenys.TipusA(posY);
+    }
+
+    public void mostraClassificacio(){
+        ComparadorVehicles comparador = new ComparadorVehicles();
+        Collections.sort(this.vehiclesParticipants, comparador);
+        for(VehicleEnCursa v: this.vehiclesParticipants){
+            v.mostraParticipant();
+        }
     }
 
 }
