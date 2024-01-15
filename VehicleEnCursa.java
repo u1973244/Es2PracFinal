@@ -35,6 +35,10 @@ public class VehicleEnCursa {
     public Vector2 getPos(){
         return _posicio;
     }
+    
+    public Vector2 pos(){
+        return _posicio;
+    }
 
     public boolean canviarPersonatge(Personatge personatge){
         if(personatge.elegible()){
@@ -98,9 +102,6 @@ public class VehicleEnCursa {
         return _tipusVehicle.nomVehicle();
     }
 
-    public Vector2 pos(){
-        return _posicio;
-    }
 
     public void mostrarMoviment(){
         System.out.print("Vehicle id: " + String.valueOf(this._id) + " es troba a la posicio: ("+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +") km i es mou amb una velocitat de: (" + String.valueOf(this._velocitat.x()) + "," + String.valueOf(this._velocitat.y()) + ") km/h \n");
