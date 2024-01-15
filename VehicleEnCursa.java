@@ -54,7 +54,7 @@ public class VehicleEnCursa {
 
     public void avança(){ //
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
-        this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
+        this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
     }
 

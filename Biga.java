@@ -13,6 +13,7 @@ class Biga extends TipusVehicle{
 
     @Override
     public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+        System.out.println("Accelero com una Biga\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double accelAdaptada=adaptacio.adapta(accel);
         double novaVelocitat=vel.magnitude()+accelAdaptada;
@@ -29,6 +30,7 @@ class Biga extends TipusVehicle{
 
     @Override
     public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+        System.out.println("Freno com una Biga\n");
         double frenada=0.9;
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double frenadaAdaptada=frenada-adaptacio.adapta(frenada);
