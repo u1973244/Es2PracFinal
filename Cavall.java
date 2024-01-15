@@ -2,6 +2,8 @@ import java.util.Set;
 
 class Cavall extends TipusVehicle{
     
+    public double umbralVelocitat=7;
+
     public Cavall(int id, String nom, double vMax, double adherencia, Set<TipusTerreny> tipus_terrenys){
         super(id, nom, vMax, adherencia);
         this._resistenciaAlXoc=0.8;
@@ -11,7 +13,19 @@ class Cavall extends TipusVehicle{
 
     @Override
     public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
-
+        AdaptacioTerreny adaptacio=_adaptacions.get(t);
+        double accelAdaptada=adaptacio.adapta(accel);
+        double novaVelocitat=vel.magnitude()+accelAdaptada;
+        vel.normalize();
+        vel.scale(novaVelocitat);
+        if (vel.magnitude()>umbralVelocitat) { // comportament especial de Cavall, si supera l'umbral, la velocitat es posa al maxim
+            vel.normalize();
+            vel.scale(_vMax);
+        }
+        pos.add(vel);
+        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
+        if(accel>0) return Math.min(this._accelMax, accel);
+        else return Math.max(-this._accelMax, accel);
     }
 
     @Override
