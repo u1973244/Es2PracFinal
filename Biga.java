@@ -12,7 +12,7 @@ class Biga extends TipusVehicle{
     }
 
     @Override
-    public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+    public void accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
         System.out.println("Accelero com una Biga a sobre de " + t.tipus() + "\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double accelAdaptada=adaptacio.adapta(accel);
@@ -24,12 +24,10 @@ class Biga extends TipusVehicle{
         }
         pos.add(vel);
         if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
-        if(accel>0) return Math.min(this._accelMax, accel);
-        else return Math.max(-this._accelMax, accel);
     }
 
     @Override
-    public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+    public void frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
         System.out.println("Freno com una Biga a sobre de " + t.tipus() + "\n");
         double frenada=0.9;
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
@@ -37,6 +35,5 @@ class Biga extends TipusVehicle{
         vel.scale(frenadaAdaptada);
         pos.add(vel);
         if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
-        return accel*frenadaAdaptada;
     }
 }

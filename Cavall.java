@@ -12,7 +12,7 @@ class Cavall extends TipusVehicle{
     }
 
     @Override
-    public double accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
+    public void accelerar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){
         System.out.println("Accelero com un cavall a sobre de " + t.tipus() + "\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double accelAdaptada=adaptacio.adapta(accel);
@@ -24,13 +24,10 @@ class Cavall extends TipusVehicle{
             vel.scale(_vMax);
         }
         pos.add(vel);
-        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
-        if(accel>0) return Math.min(this._accelMax, accel);
-        else return Math.max(-this._accelMax, accel);
     }
 
     @Override
-    public double frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){ // Cavall no pot frenar, només pot deixar d'accelerar i que el freni el terra si és que ho fa
+    public void frenar(Vector2 pos, Vector2 vel,double accel, TipusTerreny t){ // Cavall no pot frenar, només pot deixar d'accelerar i que el freni el terra si és que ho fa
         System.out.println("Freno com un cavall a sobre de " + t.tipus() + "\n");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         accel=adaptacio.adapta(accel);
@@ -38,8 +35,6 @@ class Cavall extends TipusVehicle{
         vel.normalize();
         vel.scale(velMagnitud);
         pos.add(vel);
-        if(vel.magnitude()<0.01) vel.set(0, 0.1); // perque mai sigui 0 que sino dona problemes per com esta fet 
-        return accel;
     }
 
 }
