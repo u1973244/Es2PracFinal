@@ -54,7 +54,7 @@ public class VehicleEnCursa {
 
     public void avança(){ //
         if(this._acceleracio<0) this._acceleracio=0;
-        this._acceleracio+=0.5;
+        this._acceleracio+=1;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
@@ -63,7 +63,7 @@ public class VehicleEnCursa {
 
     public void recula(){
         if(this._acceleracio>0) this._acceleracio=0;
-        this._acceleracio-=0.5;
+        this._acceleracio-=1;
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._acceleracio=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._acceleracio,t);
         this.comprovaVoltaNova();
@@ -110,26 +110,8 @@ public class VehicleEnCursa {
     }
 
     public void mostrarMoviment(){
-        String mov;
-        if (_acceleracio==1){
-            mov = "accelera fins assolir una velocitat de "+_vel+ " km/h";
-        }
-        else if(_acceleracio==-1){
-            mov = "frena fins assolir una velocitat de "+_vel+ " km/h";
-        }
-        else{
-            mov = "mante una velocitat de "+_vel+ " km/h";
-        }
-        System.out.print("Vehicle es mou direccio ");
-        int rot  = _pos.getRotacio();
-        if (rot <= -135 || rot >= 135 ) System.out.print("S");
-        else if (rot >= -45 && rot <= 45) System.out.print("N");
-        if (rot <= -45 && rot >= -135) System.out.print("O");
-        else if (rot >= 45 && rot <= 135) System.out.print("E");
-        System.out.print(" i "+mov+"\n");
-        System.out.print("Punt actual del vehicle: "+_pos.getPunt()+"\n");
-        System.out.print("Falten "+_pos.getRestant()+" km per arribar a la meta");
-        
+        System.out.print("Vehicle id: " + String.valueOf(this._id) + " es troba a la posicio: ("+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +") km i es mou amb una velocitat de: (" + String.valueOf(this._velocitat.x()) + "," + String.valueOf(this._velocitat.y()) + ") km/h \n");
+        System.out.print("Ha completat "+ String.valueOf(this._voltes) +" voltes al circuit \n");      
     }
 
     private void comprovaVoltaNova(){
