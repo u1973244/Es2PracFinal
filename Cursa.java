@@ -24,11 +24,6 @@ public class Cursa {
 
 
     private int _id;
-    private int _maxParticipants;
-    private int _duradaVoltes;
-    private boolean _comencada;
-    private boolean _acabada;
-    private TipusTerreny _terreny;
     private int _lastId=0;
 
 
@@ -40,10 +35,6 @@ public class Cursa {
     //constructor amb parametres
     public Cursa(int durada, int maxParticipants, Terrenys terrenys){
         this._id=0;
-        this._maxParticipants=maxParticipants;
-        this._duradaVoltes=durada;
-        this._comencada=false;
-        this._acabada=false;
         this._personatges=new Personatges("DadesPersonatges");
         this._terrenys=terrenys;
     }
