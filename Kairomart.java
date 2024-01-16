@@ -117,7 +117,7 @@ public class Kairomart {
                     mostrarClassificacioFinal(cursa);
                     break;
                 case "0":
-                    System.out.println("-FINAL-");
+                    System.out.println("---FINAL---");
                     break;
             
                 default:

@@ -51,7 +51,7 @@ public class VehicleEnCursa {
         return _personatge;
     }
 
-    public void avança(){ //
+    public void avança(){ 
         TipusTerreny t=_cursa.tipusTerrenyA(_posicio.y());
         this._velocitat=this._tipusVehicle.accelerar(this._posicio,this._velocitat,this._dir,t,true);
         this.comprovaVoltaNova();
@@ -90,7 +90,7 @@ public class VehicleEnCursa {
 
 
     public void mostraParticipant(){
-        System.out.print(_jugador.nomJugador() + "   " + _personatge.nomPersonatge() + "   " + _tipusVehicle.nomVehicle() + "\n");
+        System.out.println(_jugador.nomJugador() + ": " + _personatge.nomPersonatge() + " [" + _tipusVehicle.nomVehicle() + "]");
     }
 
     public String nomTipusVehicle(){
