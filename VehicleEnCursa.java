@@ -99,7 +99,7 @@ public class VehicleEnCursa {
 
 
     public void mostrarMoviment(){
-        System.out.print("Vehicle id: " + String.valueOf(this._id) + " es troba a la posicio: ("+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +") km i es mou amb una velocitat de: " + String.valueOf(this._velocitat) + "km/h en direccio: (" + String.valueOf(this._dir.x()) +"," + String.valueOf(this._dir.y()) +") \n");
+        System.out.print("Vehicle de " + String.valueOf(this._jugador.nomJugador()) + " es troba a la posicio ["+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +"] km i es mou amb una velocitat de " + String.valueOf(this._velocitat) + "km/h en direccio (" + String.valueOf(this._dir.x()) +"," + String.valueOf(this._dir.y()) +") \n");
         System.out.print("Ha completat "+ String.valueOf(this._voltes) +" voltes al circuit \n");      
     }
 

@@ -26,8 +26,7 @@ public class Kairomart {
 
     private static void moureVehicle(Cursa c){
 
-        System.out.println("\n-MOURE VEHICLE-");
-        System.out.println("-PARTICIPANTS DE LA CURSA-");
+        System.out.println("-MOURE VEHICLE-");
         c.mostraParticipants();
         System.out.print("Entra nom participant: ");
         String nomJugador = LectorEntrada.llegir();
@@ -41,7 +40,6 @@ public class Kairomart {
         //COMPROVAR SI VEHICLE EXISTEIX
         while(v==null){
             System.out.println("**JUGADOR NO EXISTEIX**");
-            System.out.println("-PARTICIPANTS DE LA CURSA-");
             c.mostraParticipants();
             System.out.print("Entra nom participant: ");
             nomJugador = LectorEntrada.llegir();
@@ -54,11 +52,11 @@ public class Kairomart {
         
         //ENTRAR DADES MOVIMENT
         System.out.print("-ENTRA DADES MOVIMENT- \n");
-        System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n- Z - Girar\\n");
+        System.out.println("  - [W] Accelerar\n  - [S] Recular\n  - [X] Frenar\n  - [Z] Girar");
         String option = LectorEntrada.llegir();
         while((!option.equals("W")) && (!option.equals("S")) && (!option.equals("X")) && (!option.equals("Z"))){
             System.out.println("**ERROR D'ENTRADA DADES**");
-            System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
+            System.out.println("  - [W] Accelerar\n   - [S] Recular\n   - [X] Frenar\n    - [Z] Girar");
             option = LectorEntrada.llegir();
         }  
         switch (option) {

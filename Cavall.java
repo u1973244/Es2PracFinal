@@ -13,7 +13,7 @@ class Cavall extends TipusVehicle{
 
     @Override
     public double accelerar(Vector2 pos, double vel, Vector2 dir, TipusTerreny t, boolean endavant){
-        System.out.println("Accelero com un cavall a sobre de " + t.tipus() + "\n");
+        System.out.println("~Accelero com un cavall a sobre de " + t.tipus() + "~");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         double accelAdaptada=adaptacio.adapta(this._accel);
         if(endavant) vel+=accelAdaptada;
@@ -27,7 +27,7 @@ class Cavall extends TipusVehicle{
 
     @Override
     public double frenar(Vector2 pos, double vel, Vector2 dir, TipusTerreny t){ // Cavall no pot frenar el frena el terra
-        System.out.println("Freno com un cavall a sobre de " + t.tipus() + "\n");
+        System.out.println("~Freno com un cavall a sobre de " + t.tipus() + "~");
         AdaptacioTerreny adaptacio=_adaptacions.get(t);
         vel=adaptacio.adapta(vel);
         pos.add(new Vector2(dir.x()*vel, dir.y()*vel));

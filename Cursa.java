@@ -53,7 +53,7 @@ public class Cursa {
     }
 
     public void mostraParticipants(){
-        System.out.println("\n-------PARTICIPANTS A LA CURSA--------");
+        System.out.println("-PARTICIPANTS A LA CURSA-");
         for(VehicleEnCursa v: vehiclesParticipants){
             v.mostraParticipant();
         }
@@ -113,14 +113,14 @@ public class Cursa {
             copia.add(v);
         }
         Collections.sort(copia, comparador);
-        System.out.println("-------CLASSIFICACIO--------\n");
+        System.out.println("-------CLASSIFICACIO--------");
         int i=1;
 
-
         for(VehicleEnCursa v: copia){
-            System.out.println("Pos #" + String.valueOf(i) + ":");
+            System.out.println("POS #" + String.valueOf(i) + ":");
+            System.out.print("    ");
             v.mostraParticipant();
-            v.voltes();
+            System.out.println("    Voltes: " + v.voltes());
             i++;
         }
     }
