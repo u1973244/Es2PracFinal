@@ -21,6 +21,9 @@ class Biga extends TipusVehicle{
         if (vel>umbralVelocitat) { // comportament especial de Biga, si supera l'umbral, la velocitat es disminueix un 50%
             vel=vel*0.5;
         }
+        else if(vel<-umbralVelocitat){
+            vel=vel*0.5;
+        }
         pos.add(new Vector2(dir.x()*vel, dir.y()*vel));
         return vel;
     }
