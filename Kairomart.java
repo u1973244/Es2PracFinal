@@ -70,7 +70,7 @@ public class Kairomart {
                 v.atura();
                 break;
             case "Z":
-                v.gira(3.14);
+                v.gira(3.1416/4);
                 break;
         }
         v.mostrarMoviment();
