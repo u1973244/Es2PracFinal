@@ -4,8 +4,8 @@ class Biga extends TipusVehicle{
 
     private double umbralVelocitat=8;
 
-    public Biga(int id, String nom, double vMax, double adherencia, Set<TipusTerreny> tipus_terrenys){
-        super(id, nom, vMax, adherencia);
+    public Biga(int id, String nom, double vMax, double adherencia, Set<TipusTerreny> tipus_terrenys, double accel){
+        super(id, nom, vMax, adherencia, accel);
         this._resistenciaAlXoc=1.1;
         this._factorVehicleAdaptacio=0.8;
         inicialitzarAdaptacions(tipus_terrenys);

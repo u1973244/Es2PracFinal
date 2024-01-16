@@ -4,8 +4,8 @@ class Cavall extends TipusVehicle{
     
     public double umbralVelocitat=7;
 
-    public Cavall(int id, String nom, double vMax, double adherencia, Set<TipusTerreny> tipus_terrenys){
-        super(id, nom, vMax, adherencia);
+    public Cavall(int id, String nom, double vMax, double adherencia, Set<TipusTerreny> tipus_terrenys, double accel){
+        super(id, nom, vMax, adherencia, accel);
         this._resistenciaAlXoc=0.8;
         this._factorVehicleAdaptacio=0.6;
         inicialitzarAdaptacions(tipus_terrenys);

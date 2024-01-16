@@ -6,8 +6,7 @@ abstract class TipusVehicle {
     protected int _id;
     protected String _nom;
     protected double _vMax;
-    protected double _accel=7;
-    protected double _accelMax;
+    protected double _accel;
     protected double _adherencia;
     protected double _resistenciaAlXoc;
     protected double _factorVehicleAdaptacio;
@@ -20,12 +19,12 @@ abstract class TipusVehicle {
         return this._nom;
     }
 
-    public TipusVehicle(int id, String nom, double vMax, double adherencia){
+    public TipusVehicle(int id, String nom, double vMax, double adherencia, double accel){
         this._id = id;
         this._nom = nom;
         this._vMax = vMax;
         this._adherencia = adherencia;
-        this._accelMax=6;
+        this._accel=accel;
     }
 
     protected void inicialitzarAdaptacions(Set<TipusTerreny> tipus_terrenys){

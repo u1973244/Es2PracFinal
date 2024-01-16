@@ -2,8 +2,8 @@ import java.util.Set;
 
 class Quadriga extends TipusVehicle{
     
-    public Quadriga(int id, String nom, double vMax, double adherencia,Set<TipusTerreny> tipus_terrenys){
-        super(id, nom, vMax, adherencia);
+    public Quadriga(int id, String nom, double vMax, double adherencia,Set<TipusTerreny> tipus_terrenys,double accel){
+        super(id, nom, vMax, adherencia,accel);
         this._resistenciaAlXoc=1.2;
         this._factorVehicleAdaptacio=1.0;
         inicialitzarAdaptacions(tipus_terrenys);
