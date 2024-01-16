@@ -12,7 +12,7 @@ public class Kairomart {
         String nomJugador = LectorEntrada.llegir();
         Jugador j=jugadors.find(nomJugador);
         while(j==null){
-            System.out.println("-JUGADOR NO EXISTEIX-");
+            System.out.println("**JUGADOR NO EXISTEIX**");
             System.out.println("-JUGADORS AMB ELS QUE ET POTS IDENTIFICAR-");
             jugadors.mostra();
             System.out.print("Entra el nom del Jugador: ");
@@ -40,7 +40,7 @@ public class Kairomart {
         
         //COMPROVAR SI VEHICLE EXISTEIX
         while(v==null){
-            System.out.println("-JUGADOR NO EXISTEIX-");
+            System.out.println("**JUGADOR NO EXISTEIX**");
             System.out.println("-PARTICIPANTS DE LA CURSA-");
             c.mostraParticipants();
             System.out.print("Entra nom participant: ");
@@ -57,7 +57,7 @@ public class Kairomart {
         System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n- Z - Girar\\n");
         String option = LectorEntrada.llegir();
         while((!option.equals("W")) && (!option.equals("S")) && (!option.equals("X")) && (!option.equals("Z"))){
-            System.out.println("-ERROR D'ENTRADA DADES-");
+            System.out.println("**ERROR D'ENTRADA DADES**");
             System.out.print("- W - Accelerar\n- S - Recular\n- X - Frenar\n - Z - Girar\\n");
             option = LectorEntrada.llegir();
         }  
@@ -121,7 +121,7 @@ public class Kairomart {
                     break;
             
                 default:
-                    System.out.println("-Opció no vàlida, tria una opció vàlida-");
+                    System.out.println("**Opció no vàlida, tria una opció vàlida**");
             }
         } while(!opcio.equals("0"));
         LectorEntrada.close();

@@ -62,7 +62,7 @@ public class Cursa {
     }
 
     public void mostraParticipants(){
-        System.out.println("-------PARTICIPANTS A LA CURSA--------");
+        System.out.println("\n-------PARTICIPANTS A LA CURSA--------");
         for(VehicleEnCursa v: vehiclesParticipants){
             v.mostraParticipant();
         }

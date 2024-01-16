@@ -22,7 +22,7 @@ public class Jugador {
 
     public void participar(Cursa c){
         if(_vehicle!=null){
-            System.out.println("    AQUEST JUGADOR JA ESTÀ PARTICIPANT A LA CURSA");
+            System.out.println("**AQUEST JUGADOR JA ESTÀ PARTICIPANT A LA CURSA**");
             return;
         }
 
@@ -30,13 +30,13 @@ public class Jugador {
         TipusVehicle v=null;
         v=seleccionarVehicle();
         while (v==null){
-            System.out.println("    VEHICLE NO DISPONIBLE");
+            System.out.println("**VEHICLE NO DISPONIBLE**");
             v=seleccionarVehicle();
         }
         Personatge p=null;
         p=seleccionarPersonatge(c);
         while (v==null){
-            System.out.println("    PERSONATGE NO DISPONIBLE");
+            System.out.println("**PERSONATGE NO DISPONIBLE**");
             v=seleccionarVehicle();
         }
 
@@ -51,7 +51,7 @@ public class Jugador {
     private TipusVehicle seleccionarVehicle(){
 
         //MOSTRAR VEHICLES
-        System.out.println("    VEHICLES");
+        System.out.println("-VEHICLES-");
         this._vehiclesDisponibles.mostrar();
 
         //TRIAR UN VEHICLE
@@ -64,7 +64,7 @@ public class Jugador {
     private Personatge seleccionarPersonatge(Cursa c){
         
         //MOSTRAR PERSONATGES DISPONIBLES
-        System.out.println("    PERSONATGES DISPONIBLES");
+        System.out.println("-PERSONATGES DISPONIBLES-");
         ArrayList<Personatge> personatges= c.personatgesDisponibles();
         for(Personatge personatge:personatges){
             if (personatge.elegible()){

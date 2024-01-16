@@ -30,7 +30,7 @@ public class Jugadors {
 
     public void mostra(){
         for(Jugador j : _jugadors){
-            System.out.println(j.nomJugador());
+            System.out.println("    - " + j.nomJugador());
         }
     }
 }
