@@ -21,6 +21,9 @@ class Cavall extends TipusVehicle{
         if (vel>umbralVelocitat) { // comportament especial de Cavall, si supera l'umbral, la velocitat es posa al maxim
             vel=_vMax;
         }
+        else if(vel<-umbralVelocitat){
+            vel=-_vMax;
+        }
         pos.add(new Vector2(dir.x()*vel, dir.y()*vel));
         return vel;
     }
