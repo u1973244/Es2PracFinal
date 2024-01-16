@@ -35,9 +35,9 @@ public class Jugador {
         }
         Personatge p=null;
         p=seleccionarPersonatge(c);
-        while (v==null){
+        while (p==null){
             System.out.println("**PERSONATGE NO DISPONIBLE**");
-            v=seleccionarVehicle();
+            p=seleccionarPersonatge(c);
         }
 
         this._vehicle=c.apuntarse(this,v,p);
