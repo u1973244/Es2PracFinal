@@ -99,8 +99,8 @@ public class VehicleEnCursa {
 
 
     public void mostrarMoviment(){
-        System.out.print("Vehicle de " + String.valueOf(this._jugador.nomJugador()) + " es troba a la posicio ["+ String.valueOf(this._posicio.x()) + "," + String.valueOf(this._posicio.y()) +"] km i es mou amb una velocitat de " + String.valueOf(this._velocitat) + "km/h en direccio (" + String.valueOf(this._dir.x()) +"," + String.valueOf(this._dir.y()) +") \n");
-        System.out.print("Ha completat "+ String.valueOf(this._voltes) +" voltes al circuit \n");      
+        System.out.println("Vehicle de " + this._jugador.nomJugador() + " es troba a la posicio ["+ Math.round(this._posicio.x() * Math.pow(10,2))/Math.pow(10,2) + "," + Math.round(this._posicio.y() * Math.pow(10,2))/Math.pow(10,2) +"] km i es mou amb una velocitat de " + Math.round(this._velocitat * Math.pow(10,2))/Math.pow(10,2) + "km/h en direccio (" + Math.round(this._dir.x() * Math.pow(10,2))/Math.pow(10,2) +"," + Math.round(this._dir.y() * Math.pow(10,2))/Math.pow(10,2) +")");
+        System.out.println("Ha completat "+ this._voltes +" voltes al circuit");
     }
 
     private void comprovaVoltaNova(){
